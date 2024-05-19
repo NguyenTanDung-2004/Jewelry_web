@@ -41,6 +41,7 @@ public class LoginGoogleServlet extends HttpServlet {
 	  int id_user = interact_with_user.get_id_user(email);
 		HttpSession session = req.getSession();
 		session.setAttribute("id_user", id_user);
+		session.setAttribute("img", interact_with_user.get_img_user(id_user));
 		System.out.println(id_user);
 		try {
 			resp.sendRedirect("http://localhost:8080/Jewelry_web/product");
