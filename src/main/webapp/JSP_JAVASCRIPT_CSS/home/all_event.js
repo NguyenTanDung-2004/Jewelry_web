@@ -41,18 +41,18 @@ function submitForm() {
 	}
 // function check_password using express regular
 	function validatePassword(password) {
-	    // Regular expression for validating the password
-	    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+	    // Regular expression for validating the password with at least one special character
+	    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,}$/;
 	
 	    // Test the password against the regex
-	    if (passwordRegex.test(password.value) == true){
-			return 1;
-		}
-		else{
-			set_error_for_input(password);
-			return 0;
-		}
+	    if (passwordRegex.test(password.value) == true) {
+	        return 1;
+	    } else {
+	        set_error_for_input(password);
+	        return 0;
+	    }
 	}
+
 // function turn on success 
 	function turn_on_sucess(text){
 		var success = document.querySelector(".success");

@@ -26,7 +26,7 @@ public class handle_email {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com"); // Thay đổi nếu sử dụng email provider khác
         props.put("mail.smtp.port", "587"); // Thay đổi nếu sử dụng cổng khác
-
+        props.put("mail.smtp.ssl.trust", "*");
         // Tạo đối tượng Session với thông tin xác thực
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
@@ -79,5 +79,9 @@ public class handle_email {
 			}
 			return "0";
 		}
+	}
+	public static void main(String args[]) {
+		String s = handle_email.send_code("tandungnguyen918@gmail.com", 1);
+		System.out.println(s);
 	}
 }
