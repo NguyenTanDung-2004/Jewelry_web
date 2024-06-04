@@ -1,0 +1,612 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+
+
+html {
+    background-color: #FFF9F4;
+}
+
+
+.header {
+    display: flex;
+    height: 130px;
+    margin-bottom: 30px;
+}
+.wrapper {
+    height:100rem;
+    margin-left: 130px;
+    margin-right: 40px;
+}
+
+.nav_bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    width: 24%;
+    height: 29px;
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    color: #ABABAB;
+}
+
+.drop_down_menu {
+
+    cursor: pointer;
+    display: none;
+}
+
+.drop_down_icon {
+    display: none;
+}
+
+.nav_bar_item_link{
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+    /* font-family: Itim; */
+    color: gray;
+}
+
+.nav_bar_item_link:hover {
+    opacity: 0.6;
+}
+
+.logo {
+    margin:auto;
+    position: relative;
+    text-align: center;
+
+}
+#logo_img {
+    width: 95px;
+    height: 100%;
+    text-align: center;
+}
+
+.logo >div {
+    position: absolute;
+    width: 310px;
+    height: 44px;
+    transform: translate(-35%, -58%);
+    font-family: Podkova;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 44.32px;
+    text-align: center;
+}
+
+.cart {
+    display: flex;
+    width: 17%;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+}
+
+.user, .shopping_cart {
+    text-align: center;
+    line-height: 204px
+}
+
+#user_icon, #shopping_cart_icon {
+    width: 54%;
+    height: 41%;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    margin: 15px 0;
+    background-color: #CCCCCC;
+}
+
+.main_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.display {
+    width: 70%;
+}
+
+.display_cart {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #FDF9F9;
+    border: 2px solid #CCCCCC;
+}
+
+.my_cart{
+    width: 140px;
+    height: 42px;
+    font-family: Istok Web;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 42px;
+    text-align: center;
+}
+.cart_info {
+     position: relative;
+}
+
+.cart_info_ul {
+    display: inline-block;
+    width: 105px;
+    height: 42px;
+    font-family: "Istok Web";
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 42px;
+    text-align: center;
+}
+
+#all_cart
+
+#filter:hover, #all_cart:hover {
+    cursor:pointer;
+}
+
+.user_hover{
+    scale: 0;
+    transform-origin: 10px 30px;
+    transition: 0.3s;
+    position: absolute;
+    right: 110px;
+    top: 10px;
+    z-index: 1;
+}
+
+.user_hover_content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 150px;
+    background-color: white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    left: -20px;
+    top: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.user_hover_content > p{
+    cursor: pointer;
+    width: 87%;
+    border-radius: 5px;
+    transition: 0.3s;
+    padding: 10px 10px;
+}
+.user_hover_content > p:hover{
+    box-shadow:0 2px 10px 2px gray;
+}
+.arrow{
+    position: absolute;
+    top: 35px;
+    left: 50px;
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    transform: rotateZ(45deg);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
+    z-index: -9;
+}
+
+.my_cart_text {
+    display: inline-block;
+}
+.cart_amount {
+    display: inline-block;
+    background-color: #f6e7d7;
+    border-radius: 50%;
+    height: 42px;
+    width: 42px
+}
+
+input[type="checkbox"] {
+    accent-color: #DFBF92;
+}
+
+.all_product, .product_name {
+    width: 100%;
+    height: 42px;
+    font-family: Istok Web;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.product_type, .order_product_name, .order_product_price{
+    font-family: Itim;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin-left: 20px;
+    color:#ABABAB;
+
+}
+
+.product_info {
+    display: flex;
+
+}
+.product_image {
+    width: 183px;
+    height: 181px;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+.product_description {
+    position: relative;
+}
+
+.product_description > p {
+    font-family: Istok Web;
+    color: #ABABAB;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+}
+
+.product_size {
+    font-family: Istok Web;
+    background-color: #f6e7d7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    width: 120px;;
+    text-align: center;
+}
+
+.product_price_and_update {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex: 0 0 100%;
+    bottom: 0;
+}
+
+.product_quantity {
+    display: inline-block;
+    background-color: transparent;
+}
+
+.order_summmary {
+    background-color: white;
+    width: 23%;
+    height: auto;
+    margin-top: 20px;
+    padding: 10px 30px 20px;
+}
+
+.order_info {
+    margin-bottom: 15px;
+}
+.order_summmary >h3 {
+    font-family: Itim;
+    margin-bottom: 5px;
+}
+
+.order_product_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order_product_name, .order_product_price,.order_product_quantity {
+    flex: 2;
+    font-size: 13px;
+    margin-left: 0;
+}
+
+.order_product_price {
+    flex: 1;
+    text-align: end;
+}
+
+.order_product_quantity {
+    font-family: Itim;
+    flex: 1;
+    text-align: center;
+    color:#ABABAB;
+}
+
+.delivery, .order_total{
+    width: 100%;
+    margin: 10px 0;
+}
+
+.delivery > h3 {
+    font-family: Itim;
+    color:#ABABAB;
+    font-weight: 400;
+}
+
+.no_delivery_info {
+    font-family: Istok Web;
+    text-align: center;
+    margin-top: 10px;
+    color: #ABABAB;
+    font-weight: 400;
+}
+
+.has_delivery_info {
+    display: none;
+}
+
+.delivery_info {
+    height: auto;
+    font-family: Istok Web;
+    text-align: left;
+    margin-top: 10px;
+    color: #ABABAB;
+    font-weight: 400;
+}
+
+#delivery_info_btn {
+    width: 37%;
+    transform: translateX(84%);
+    background-color: transparent;
+    color: #0E333C;
+    border: 1px solid #0E333C;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+#delivery_info_btn:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #0E333C;
+}
+
+.order_amount, .order_discount, .order_total, .coupon_code, .shipping_fee {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shipping_fee {
+    margin-bottom: 10px;
+}
+
+.order_amount >h3, .order_discount>h3, .order_total>h3, .coupon_code>h3, .shipping_fee>h3 {
+    font-family: Itim;
+    font-weight: 800;
+    color: #ABABAB;
+}
+
+.order_total>h3 {
+    color: black;
+}
+
+.order_discount_value, .order_amount_total_price, .order_total_price, .coupon_code_value {
+    font-family: Istok Web;
+    font-weight: 800;
+    color: #ABABAB;
+}
+
+.order_total_price {
+    color: #0E333C;
+}
+
+.coupon {
+    display: flex;
+    width: 100%;
+    height: 38px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #0E333C;
+}
+
+#coupon_image {
+    height: 100%;
+    width: auto;
+    padding-left: 10px;
+}
+
+#coupon_input:focus {
+    outline: none;
+}
+#buy_btn {
+    display: block;
+    width: 100%;
+    height: 38px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #0E333C;
+}
+
+#buy_btn, #save_btn {
+    color: white;
+    background-color:#0E333C;
+}
+
+#buy_btn:hover, #save_btn:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#buy_btn:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.modal,.order_successfully {
+    visibility: hidden;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(236,233,231, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main_modal,.main_order_successfully {
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    height: auto;
+    background-color: white;
+    padding: 30px;
+}
+
+.input_line {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-container {
+    position: relative; 
+    width: 45%;/* This allows absolute positioning of the label */
+}
+  
+.input-container>label {
+    position: absolute; /* Move the label on top of the input */
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    font-size: 12px; /* Adjust font size for a smaller placeholder-like appearance */
+    color: gray; /* Set a light gray color for a placeholder-like feel */
+    pointer-events: none; /* This prevents accidental clicks on the label */
+}
+
+.input-container>input, .input-container>select {
+    padding-bottom: 10px;
+    box-sizing:border-box;
+    padding-top: 30px;
+    padding-left: 20px; 
+    width: 100%;
+    border: 1px solid #ABABAB;
+}
+
+
+
+.address_input, .phone_input {
+    width: 95%;
+}
+
+.province_input, .city_input, .district_input {
+    width:28%;
+}
+
+
+
+#save_btn {
+    width: 28%;
+    height: 31px;
+}
+
+.main_order_successfully {
+    background-color: #fbf2e9;   
+    position: relative;
+}
+
+.order_successfully_logo {
+    margin: auto;
+    text-align: center;
+}
+
+.order_successfully_logo>img {
+    width: 261px;
+    height: 265px;
+}
+
+.main_order_successfully > p{
+    font-family: Istok Web;
+    text-align: center;
+}
+
+.sticky {   
+    position: fixed;
+    top: 0;
+    right: 40px;
+    width: 21%;
+    margin-top: 0;
+}
+
+
+
+@media (max-width:1120px) {
+    .wrapper {
+        margin-left: 40px;
+    }
+    .main_content {
+        display: block;
+    }
+
+    .display {
+        width: 100%;
+    }
+
+    .order_summmary {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .drop_down_menu {
+        display: block;
+        width: 24%;
+        height: 29px;
+        position: absolute;
+        top: 13%;
+        text-align: left;
+        color: #ABABAB;
+    }
+
+    .nav_bar {
+        display: none;
+    }
+    .dropdown_nav_bar_item {
+        padding: 9px;
+        background-color: #f6e7d7;
+        border: 1px solid white;
+        text-align: left;
+        display: none;
+        border-radius: 1px;
+    }
+
+    .drop_down_icon {
+        display: block;
+    }
+}
+
+@media (max-width:600px) {
+    .product_info {
+        display: block;
+        height: auto;
+    }
+    .product_price_and_update {
+        position: unset;
+    }
+    .product_description {
+        margin-left: 20px;
+    }
+    .cart {
+        display: none;
+    }
+}

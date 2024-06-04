@@ -441,5 +441,6 @@
         <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/home/login.js"></script>
         <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/home/forgot.js"></script>
         <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/home/change_tab.js"></script>
+        <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/home/auto_click_login.js"></script>
     </body>
 </html>

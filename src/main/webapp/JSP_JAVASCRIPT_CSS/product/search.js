@@ -50,8 +50,20 @@ function create_1_result(product){
 	
 	result1Div.appendChild(image);
 	result1Div.appendChild(textDiv);
-	var result_scroll = document.querySelector(".result_scroll");
-	result_scroll.appendChild(result1Div);
+	
+	//tạo link
+	var name = toFriendlyUrl(product[1]);
+	var friendlyUrl = `${name}-${product[0]}.html`;
+	const link = document.createElement("a");
+    link.href = "/Jewelry_web/product/" + friendlyUrl; 
+    link.className = "linkSearch";
+    
+    // Append result1Div to the <a> element
+    link.appendChild(result1Div);
+    
+    // Append the <a> element to the result_scroll
+    var result_scroll = document.querySelector(".result_scroll");
+    result_scroll.appendChild(link);
 }
 function add_data(text){
 	var result = create_list(text);

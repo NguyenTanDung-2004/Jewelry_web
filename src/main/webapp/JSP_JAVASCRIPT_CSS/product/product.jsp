@@ -78,6 +78,9 @@
     	Gson gson = new Gson();
     	return gson.toJson(s);
     }
+    public String toFriendlyUrl(String name) {
+        return name.toLowerCase().replaceAll("[^a-z0-9]+", "-").replaceAll("-+$", "");
+    }
     %>
     <body>
         <div class="logo">
@@ -98,14 +101,15 @@
                     <div class="user_hover">
                         <div class="arrow"></div>
                         <div class="content">
-                            <p>User Setting</p>
-                            <p>Order history</p>
+                            <p id="user_setting">User Setting</p>
+                            <p id="order_history">Order history</p>
                             <p id="logout">Logout</p>
                         </div>
                     </div>
                 </div>
-                <i class="fa-solid fa-cart-shopping text_child" style="color: gray"></i>
-            
+            	<a class="link_to_cart" href="http://localhost:8080/Jewelry_web/cart">
+                    <i class="fa-solid fa-cart-shopping text_child" style="color: gray"></i>
+                </a>
             </div>
             <%} %>
         </header>
@@ -192,23 +196,23 @@
                         <p id="so_luong_product"><%=all_data_product.size() + " products"%></p>
                         <div class="sanpham_cha">
                            	<%
-                           		for (int i = 0; i < all_data_product.size(); i++){                           			 
+                           		for (int i = 0; i < all_data_product.size(); i++){      
+                           			String productId = all_data_product.get(i).get(0).toString();
+                                    String productName = all_data_product.get(i).get(1).toString();
+                                    String friendlyUrl = toFriendlyUrl(productName) + "-" + productId + ".html";
                            	%>
                            	<div class="sanpham">
-                                <img src="<%="/Jewelry_web/img_product/" + all_data_product.get(i).get(0) + "_1.png" %>" style="height: 200px;" alt="">
-                                <div class="content1">
-                                    <p class="name1"><%=all_data_product.get(i).get(1) %></p>
-                                    <p class="money"><%= formatMoneyVND(all_data_product.get(i).get(2) + "") + " VND" %></p>
-                                </div>
-                                <%
-                                	if (check_discount(all_data_product, i)){ %>
-                                		<div class="sale"><%="-" + ((int)((Float)all_data_product.get(i).get(4) * 100)) + "%"%></div>
-                                	<%}
-                                %>
-                            </div>
-                            <%
-                           		}
-                            %>
+							    <a href="<%= request.getContextPath() %>/product/<%= friendlyUrl %>" class="links">
+							        <img src="<%="/Jewelry_web/img_product/" + all_data_product.get(i).get(0) + "_1.png" %>" style="height: 200px;" alt="">
+							        <div class="content1">
+							            <p class="name1"><%=all_data_product.get(i).get(1) %></p>
+							            <p class="money"><%= formatMoneyVND(all_data_product.get(i).get(2) + "") + " VND" %></p>
+							        </div>
+							        <% if (check_discount(all_data_product, i)){ %>
+							            <div class="sale"><%="-" + ((int)((Float)all_data_product.get(i).get(4) * 100)) + "%"%></div>
+							        <% } %>
+							    </a>
+							</div><%}%>
                         </div>
                         <div id="load_more" class="loadmore">
                               <p>Showing 6 of <%=all_data_product.size()%> items</p>
@@ -305,5 +309,6 @@
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/change_tab.js"></script>
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/load_items.js"></script>
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/handle_parameter_from_home.js"></script>
+    <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/event_filter_from_detail.js"></script>
     </body>
 </html>

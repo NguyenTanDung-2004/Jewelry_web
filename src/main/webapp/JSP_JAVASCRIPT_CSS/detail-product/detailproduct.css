@@ -1,0 +1,3746 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+body{
+    background-color: #FFF9F4;
+    padding-left: 50px;
+    padding-right: 50px;
+    overflow-x: hidden;
+}
+body .logo{
+    position: absolute;
+    transform: translateY(-30px);
+    left: calc(50vw - 100px);
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+}
+body .logo p{
+    position: relative;
+    top: -30px;
+}
+body header{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 76.5px;
+}
+body header .header_child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: 500;
+    height: 26.5px;
+    width: 295.52px;
+}
+body header .right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: 500;
+    height: 30px;
+    width: 90px;
+}
+body header p{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: gray;
+    cursor: pointer;
+    transition: 0.3s;
+}
+body header p:hover{
+	color: black;
+}
+body header .header_child .user{
+    position: relative; 
+}
+body header .header_child .user img{
+    cursor: pointer;
+    width: 30px; border-radius: 50%;
+}
+body header .header_child .user .user_hover{
+    scale: 0;
+    transform-origin: 10px 30px;
+    transition: 0.3s;
+    position: absolute;
+    top: -10px;
+    z-index: 1;
+}
+body header .header_child .user .user_hover .content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 150px;
+    background-color: white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    left: -20px;
+    top: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+body header .header_child .user .user_hover .content p{
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    transition: 0.3s;
+    padding: 10px 10px;
+}
+body header .header_child .user .user_hover .content p:hover{
+    box-shadow:0 2px 10px 2px gray;
+}
+body header .header_child .user .user_hover .arrow{
+    position: absolute;
+    top: 35px;
+    left: 7px;
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    transform: rotateZ(45deg);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
+    z-index: -9;
+}
+/*search-categories*/
+.detail-product{
+	margin-top: 50px;
+}
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    width: 70%;
+    transform: translateX(20%);
+}
+#close_result{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 50%;
+}
+#close_result:hover{
+    background-color: #dfbf92;
+}
+.search .result{
+    position: absolute;
+    max-height: 300px;
+    min-height: 300px;
+    width: calc(60%);
+    top: 32px;
+    left: 0;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow:0 4px 10px 2px gray;
+    display: flex;
+    flex-direction: column;
+    gap: 10;
+    padding: 10px 10px;
+    padding-top: 30px;
+}
+.search .result .result_scroll{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow-y: auto;
+   	max-height: 270px; 
+}
+.search .result .result_scroll::-webkit-scrollbar {
+    width: 5px; /* Thiết lập kích thước chiều rộng thanh cuộn */
+    transition: width 0.3s;
+}
+
+/* Màu của thanh cuộn khi không được hover */
+.search .result .result_scroll::-webkit-scrollbar-thumb {
+    background-color: gray; /* Màu của thanh cuộn */
+    border-radius: 5px; /* Bo góc cho thanh cuộn */
+}
+
+.search .result .result_scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #999; /* Màu của thanh cuộn khi được hover */
+    width: 7px;
+}
+.search .result .result_child{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 20px;
+    cursor: pointer;
+    transform: 0.3s;
+}
+.search .result .result_child:hover{
+    box-shadow:0 4px 10px 2px gray;
+}
+.search .result .result_child .text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.search .result .result_child .text .name1{
+    font-weight: 600;
+}
+.search .search_child{
+    position: absolute;
+    right: 20px;
+}
+.linkSearch{
+	text-decoration: none !important;
+  color: black !important;
+  align-items: center;
+  flex-direction: column;
+}
+.search .line{
+    width: 1px;
+    height: 25px;
+    background-color: black;
+    transform: translateX(-30px);
+}
+.search input{
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    outline: none;
+    border: 1px solid black;
+    padding-left: 20px;
+    background-color: #FFF9F4;
+}
+
+.filter_ngang{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+.filter_ngang p{
+  cursor: pointer;
+  transition: 0.2s;
+  width: 70px;
+  text-align: center;
+}
+.filter_ngang p:hover{
+  font-weight: 600;
+}
+/*line*/
+.line1{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.line1_child{
+  height: 0.5px;
+  width: 93%;
+  background-color: black;
+}
+
+.frame-parent{
+  z-index: 1;
+}
+
+/*Product's > RINGS > SILVER RINGS*/
+.title_search{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 50px;
+}
+.title_search .child{
+  font-size: 14px;
+  color: gray;
+}
+.title_search .name1{
+  font-weight: 600;
+}
+.title_search .name2{
+  font-weight: 600;
+}
+
+.frame-child2, .frame-child2-inner, 
+.content-product, .content-parent{
+  margin-top: 33px;
+}
+.content-parent{
+  flex-direction: row;
+}
+/*content-product*/
+.content-product{
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  flex-wrap: wrap;
+}
+.content-product-left-center {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.tagsale{
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 34px;
+  margin-top: -15px;
+  z-index: -8;
+}
+.tagsale-res, .rectangle-group-res, .rectangle-res, .sale-res, .tagsale-res polygon{
+  display: none;
+}
+.rectangle-group{
+  background-color: #F6E7D7;
+  border: none;
+  width: 36px;
+  height: 30px;
+}
+/*Hinh anh san pham lon*/
+.content-product-left img{
+  width: 500px;
+  height: 500px;
+  position: relative;
+  object-fit: cover;
+  z-index:-9;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+/*Hinh anh san pham nho*/
+.outer-thumb{
+  cursor:pointer;
+  white-space: nowrap;
+}
+.content-product-center{
+  position: relative;
+  display: inline-flex;
+  flex-direction:column;
+  gap: 10px;
+}
+.hinh1{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+.outer-thumb1, .content-product-center1{
+  display:none;
+}
+/*Noi dung va gia tien san pham*/
+.content-product-right{
+  display: inline-flex;
+  flex-direction: column;
+}
+/*right1*/
+.right1{
+  display: inline-flex;
+  flex-direction: column;
+}
+.right1 .name{
+  margin-top: -5px;
+  font-size: 36px;
+  max-width: 400px; /* Đặt chiều rộng tối đa cho phần tử, điều chỉnh giá trị này theo nhu cầu của bạn */
+  word-wrap: break-word; /* Cho phép xuống hàng nếu từ quá dài */
+  overflow-wrap: break-word;
+}
+.right1 .status{
+  margin-top: 3px;
+  font-size: 16px;
+  max-width: 400px; /* Đặt chiều rộng tối đa cho phần tử, điều chỉnh giá trị này theo nhu cầu của bạn */
+  word-wrap: break-word; /* Cho phép xuống hàng nếu từ quá dài */
+  overflow-wrap: break-word;
+}
+
+.line-2{
+  margin-top: 35px;
+  width: 100%;
+  height: 1px;
+}
+
+/*right2*/
+.right2{
+  display: inline-flex;
+  flex-direction: column;
+}
+/*right2-part1*/
+.right2-part1, .stars{
+  display: inline-flex;
+  flex-direction: row;
+}
+.right2-part1{
+  margin-top: 5px;
+}
+.stars{
+  margin-left: 10px;
+  width: 135px;
+  height: 24px;
+  justify-content: space-between;
+}
+.vote-reviewers{
+  display: flex;
+  flex-direction: row;
+  margin-left: 19px;
+}
+.customers, .numbervote{
+  font-size: 15px;
+  white-space: nowrap;
+}
+.customers{
+  margin-left: 3px;
+}
+/*right2-part2*/
+.right2-part2{
+  margin-top: 30px;
+}
+/*right2-part2-child1*/
+.right2-part2-child1{
+  display: inline-flex;
+  flex-direction: row;
+}
+.salevalue{
+  margin-left: 10px;
+  margin-top: -5px;
+  font-size: 30px;
+  font-family: "Itim", cursive;
+  font-weight:550;
+  font-style: normal;
+}
+.originalprice{
+  margin-left: 19px;
+  margin-top: 10px;
+}
+.originvalue{
+  color: gray;
+  font-family: "Itim", cursive;
+  font-style: normal;
+  text-decoration:line-through
+}
+/*right2-part2-child2*/
+.right2-part2-child2{
+  display: flex;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+/*child2-left*/
+.child2-left{
+  display: flex;
+  flex-direction: column;
+}
+.quantity-control{
+  display: inline-flex;
+}
+.quantity-control span{
+  font-size: 16px;
+}
+.input-container {
+  display: flex; 
+  align-items: center; 
+  width: 100px; 
+  margin-left: 15px;
+  margin-top: -3px;
+}
+.input-container input{
+	box-shadow: none;
+	outline: none;
+}
+.input-container button{
+  text-align: center;
+  display: inline-block; 
+  width: 30px; 
+  height: 30px; 
+  border: 0.5px solid #ccc;
+  background-color: white;
+  cursor: pointer;      
+}
+.input-container .decrease{
+  border-right: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+.input-container .increase{
+  border-left: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+.numbers {
+  width: 40px; 
+  border: 0.5px solid #ccc; 
+  border-left: none;
+  border-right: none;
+  height: 30px;
+  text-align: center;
+  background-color: white;
+  font-size: 16px;
+}
+.child2-left .buy{
+  text-align: center;
+  display: inline-block; 
+  width: 180px; 
+  height: 50px;
+  border: none;
+  background-color: #0E333C;
+  cursor: pointer;
+  color: white;
+  font-family: "Itim", cursive;
+  font-size: 18px;
+  margin-top: 25px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+.child2-left .buy:hover{
+  box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+}
+/*child2-right*/
+.child2-right{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.sizes{
+  display: inline-flex;
+}
+.sizes span{
+  font-size: 16px;
+}
+.size-selection{
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  width: 100px; 
+  margin-left: 15px;
+  margin-top: -3px;
+}
+.main-size{
+  display: inline-flex;
+}
+.drop-down li{
+  list-style: none;
+  cursor: pointer;
+  height: fit-content;
+  width: 90px;
+  text-align: center;
+}
+.drop-down li:hover{
+  background: white;
+  border: 1px solid #000;
+}
+.drop-down{
+  position: relative;
+  background: transparent;
+  color:black;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  border-radius: 3px;
+  align-items: center;
+  display: none;
+}
+.size-selection input{
+	outline: none;
+	box-shadpe:none;
+}
+.size-selection button{
+  text-align: center;
+  display: inline-block; 
+  width: 30px; 
+  height: 30px; 
+  border: 0.5px solid #ccc;
+  background-color: white;
+  border-left: none;
+  cursor: pointer;
+}
+.size-selection .angleup{
+  display: none;
+}
+.size-numbers{
+  width: 70px; 
+  border: 0.5px solid #ccc; 
+  border-right: none;
+  height: 30px;
+  text-align: center;
+  background-color: white;
+  font-size: 16px;
+}
+.child2-right .add-to-cart{
+  text-align: center;
+  display: inline-block; 
+  width: 180px; 
+  height: 50px;
+  border: #0E333C;
+  cursor: pointer;
+  color: black;
+  font-family: "Itim", cursive;
+  font-size: 18px;
+  margin-top: 25px;
+  margin-left: 3px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+.child2-right .add-to-cart:hover{
+  box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+}
+.fa-solid.fa-cart-shopping{
+  margin-left: 5px;
+}
+/*right2-part3*/
+.right2-part3{
+  display:flex;
+  width: 390px;
+  margin-left: 10px;
+  margin-top:20px;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.dash1{
+  margin-top: 2px;
+}
+.kindaship, .kindaguarantee, 
+.kindapayment{
+  font-style: italic;
+}
+
+/*content-line*/
+.content-line{
+  margin-top: 50px;
+  display: flex;
+  width: 100%;
+  height: 0px;
+}
+.line4{
+  width: 100%;
+  height: 1px;
+}
+
+/*content-related-products*/
+.titlename{
+  position: relative;
+  width:100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.title-name{
+  position: relative;
+  font-size: 35px;
+  width: max-content;
+  font-family: "Itim", cursive;
+  font-weight: bold;
+}
+.info-name1{
+  font-size: 18px;
+  font-weight:bold;
+}
+.img-relation{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 65px;
+  margin-bottom: 90px;
+}
+.tagsale1-res, .rectangleicon1-res, .rectangle1-res, .sale1-res, .tagsale1-res polygon{
+  display: none;
+}
+.tagsale2-res, .rectangleicon2-res, .rectangle2-res, .sale2-res, .tagsale2-res polygon{
+  display: none;
+}
+.tagsale3-res, .rectangleicon3-res, .rectangle3-res, .sale3-res, .tagsale3-res polygon{
+  display: none;
+}
+.tagsale1, .tagsale2, .tagsale3{
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  z-index: 2;
+  margin-left: 19px;
+  margin-top: -10px;
+}
+.rectangleicon1, .rectangleicon2, .rectangleicon3{
+  background-color: #F6E7D7;
+  border: none;
+  width: 32px;
+  height: 32px;
+}
+.salevalue1, .salevalue2, .salevalue3{
+  font-size: 14px;
+  font-family: "Itim", cursive;
+  font-style: normal;
+}
+.originalprice1, .originalprice2, .originalprice3{
+  font-size: 12px;
+}
+.originvalue1, .originvalue2, .originvalue3{
+  color: gray;
+  font-family: "Itim", cursive;
+  font-style: normal;
+  text-decoration-line: line-through;
+}
+
+.rectangle-info1{
+  text-align: center;
+  cursor:pointer;
+}
+.rectangle-img1{
+  justify-content: center;
+  align-items: center;
+  width:fit-content;
+  height: fit-content;
+}
+.card{
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.card:hover{
+  box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+}
+.card:hover .icon1{
+  display: flex;
+}
+.circle{
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: black;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #000;
+}
+.left{
+  width: 250px;
+  height: 250px;
+  z-index: 1;
+}
+.icon1{
+  display: none;
+  z-index: 1;
+  width: 250px;
+  margin-top: -40px;
+  margin-bottom: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.icon-plus1{
+  display: flex;
+  margin-left: 20px;
+}
+.fa-solid.fa-plus
+{
+  font-size:14px;
+  margin-left: -16.2px;
+  margin-top: 3.4px;
+}
+.fa-solid.fa-cart-plus
+{
+  font-size:11px;
+  margin-left: -16.8px;
+  margin-top: 5px;
+}
+.icon-cart1{
+  display: flex;
+}
+.swiper-container{
+  position: relative;
+  width:100%;
+}
+.swipe{
+  cursor: pointer;
+}
+.swiper-slide{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  margin: auto;
+}
+.swiper-button-next, .swiper-button-prev {
+  width: 24px;
+  height: 24px;
+}
+.swiper-button-next::after, 
+.swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: bold;
+  color:#000;
+}
+.swiper-button-next:hover{
+  transform: scale(1.2) translateX(80%);
+}
+.swiper-button-prev:hover{
+  transform: scale(1.2) translateX(-80%);
+}
+.swiper-button-next{
+  transform: translateX(100%);
+}
+.swiper-button-prev{
+  transform: translateX(-100%);
+}
+.swiper-pagination{
+  display: none;
+  transform: translateY(200%);
+}
+.links {
+  text-decoration: none !important;
+  color: black !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.links .rectangle-img1{
+    margin-bottom: 5px; /* Khoảng cách 5px dưới hình ảnh */
+}
+.links .salevalue1 {
+    margin-bottom: 5px; /* Khoảng cách 5px dưới .content1 */
+}
+/*collections*/
+body .collections{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+body .collections .products{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 35px;
+  padding-right: 35px;
+  width: 100%;
+}
+body .collections .products .product_child{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding-bottom: 20px;
+  min-width: calc(100% / 5 - 30px);
+  max-width: calc(100% / 5 - 30px);
+}
+body .collections .products .product_child:hover{
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+body .collections .products .product_child p{
+  font-weight: 500;   
+}
+body .collections .line_child{
+  height: 0.5px;
+  width: 60vw;
+  background-color: black;
+  margin-top: 20px;
+
+}
+body .collections .line{
+  display: flex;
+  justify-content: center;
+}
+body .collections .text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  font-weight: 600;
+}
+/*footer*/
+body footer .footer{
+  background-color: #0e333c;
+  padding-bottom: 100px;
+  padding-top: 50px;
+  width: 100vw;
+  transform: translateX(-50px);
+}
+body footer .footer .main{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 100px;
+  padding-right: 100px;
+  color: white;
+  font-family: "Aref Ruqaa Ink", serif;
+}
+body footer .footer .main .location .bottom3{
+  display: flex;
+  text-decoration: underline;
+}
+body footer .footer .main .main_child{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+body footer .footer .main .main_child .bottom3{
+  position: relative;
+  color: #ABABAB;
+}
+body footer .footer .main .main_child .top3{
+  font-size: 20px;
+}
+body footer .footer .main .main_child .bottom3 input{
+  height: 25px;
+  padding-left: 5px;
+  outline: none;
+}
+body footer .footer .main .subcribe .bottom3 i{
+  padding: 5px 5px;
+  position: absolute;
+  background-color: #9d6939;
+  color: white;
+  right: 0px
+}
+body footer .footer .line_copyright{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+body footer .footer .line_copyright .line{
+  width: 80vw;
+  height: 1px;
+  background-color: #ABABAB;
+  display: flex;
+  
+}
+body footer .footer .line_copyright p{
+  width: 80%;
+  transform: translateX(50px);
+  color: #ABABAB;
+}
+/*collections*/
+body .collections{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+body .collections .products{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 35px;
+  padding-right: 35px;
+  width: 100%;
+}
+body .collections .products .product_child{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding-bottom: 20px;
+  min-width: calc(100% / 5 - 30px);
+  max-width: calc(100% / 5 - 30px);
+}
+body .collections .products .product_child:hover{
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+body .collections .products .product_child p{
+  font-weight: 500;   
+}
+body .collections .line_child{
+  height: 0.5px;
+  width: 60vw;
+  background-color: black;
+  margin-top: 20px;
+
+}
+body .collections .line{
+  display: flex;
+  justify-content: center;
+}
+body .collections .text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 1340px){
+  .content-product{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    padding: 0 70px;
+  }
+}
+/* 3 content-product-related*/
+@media screen and (min-width: 1105px) and (max-width: 1335px){
+  /*Product's > RINGS > SILVER RINGS*/
+  .frame-child2, .frame-child2-inner, 
+  .content-product, .content-parent{
+    margin-top: 33px;
+  }
+  .content-parent{
+    flex-direction: row;
+  }
+  /*content-product*/
+  .content-product{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+  }
+  .tagsale{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: -8;
+  }
+  .rectangle-group{
+    background-color: #F6E7D7;
+    border: none;
+    width: 36px;
+    height: 30px;
+  }
+  /*Hinh anh san pham lon*/
+  .content-product-left img{
+    width: 430px;
+    height: 430px;
+    position: relative;
+    object-fit: cover;
+    z-index: -9;
+  }
+  /*Hinh anh san pham nho*/
+  .content-product-center{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hinh1{
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+  }
+  .content-product-center1{
+    display:none;
+  }
+  /*Noi dung va gia tien san pham*/
+  .content-product-right{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right1*/
+  .right1{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .right1 .name{
+    margin-top: -5px;
+    font-size: 35px;
+  }
+  .right1 .status{
+    margin-top: 3px;
+    font-size: 16px;
+  }
+  
+  .line-2{
+    margin-top: 35px;
+    width: 100%;
+  }
+  
+  /*right2*/
+  .right2{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right2-part1*/
+  .right2-part1, .stars{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .right2-part1{
+    margin-top: 5px;
+  }
+  .stars{
+    margin-left: 10px;
+    width: 135px;
+    height: 24px;
+    justify-content: space-between;
+  }
+  .vote-reviewers{
+    margin-left: 19px;
+  }
+  .numberreviewers, .numbervote{
+    font-size: 15px;
+  }
+  .numberreviewers{
+    margin-left: 3px;
+  }
+  /*right2-part2*/
+  .right2-part2{
+    margin-top: 30px;
+  }
+  /*right2-part2-child1*/
+  .right2-part2-child1{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .salevalue{
+    margin-left: 10px;
+    margin-top: -5px;
+    font-size: 30px;
+    font-family: "Itim", cursive;
+    font-weight:550;
+    font-style: normal;
+  }
+  .originalprice{
+    margin-left: 19px;
+    margin-top: 10px;
+  }
+  .originvalue{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+  }
+  .line-price{
+    margin-top:-11px;
+    z-index: 2;
+  }
+  /*right2-part2-child2*/
+  .right2-part2-child2{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  /*child2-left*/
+  .child2-left{
+    display: flex;
+    flex-direction: column;
+  }
+  .quantity-control{
+    display: inline-flex;
+  }
+  .quantity-control span{
+    font-size: 16px;
+  }
+  .input-container {
+    display: flex; 
+    align-items: center; 
+    width: 100px; 
+    margin-left: 15px;
+    margin-top: -3px;
+  }
+  .input-container button{
+    text-align: center;
+    display: inline-block; 
+    width: 30px; 
+    height: 30px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+  .input-container .decrease{
+    border-right: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .input-container .increase{
+    border-left: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .numbers {
+    width: 40px; 
+    border: 0.5px solid #ccc; 
+    border-left: none;
+    border-right: none;
+    height: 30px;
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+  }
+  .child2-left .buy{
+    text-align: center;
+    display: inline-block; 
+    width: 180px; 
+    height: 50px;
+    border: none;
+    background-color: #0E333C;
+    cursor: pointer;
+    color: white;
+    font-family: "Itim", cursive;
+    font-size: 18px;
+    margin-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-left .buy:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  /*child2-right*/
+  .child2-right{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .sizes{
+    display: inline-flex;
+  }
+  .sizes span{
+    font-size: 16px;
+  }
+  .size-selection{
+    display: flex; 
+    align-items: center; 
+    width: 100px; 
+    margin-left: 15px;
+    margin-top: -3px;
+  }
+  .size-selection button{
+    text-align: center;
+    display: inline-block; 
+    width: 30px; 
+    height: 30px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    border-left: none;
+    cursor: pointer;
+  }
+  .size-numbers{
+    width: 70px; 
+    border: 0.5px solid #ccc; 
+    border-right: none;
+    height: 30px;
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+  }
+  .child2-right .add-to-cart{
+    text-align: center;
+    display: inline-block; 
+    width: 180px; 
+    height: 50px;
+    border: #0E333C;
+    cursor: pointer;
+    color: black;
+    font-family: "Itim", cursive;
+    font-size: 18px;
+    margin-top: 25px;
+    margin-left: 3px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-right .add-to-cart:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  .fa-solid.fa-cart-shopping{
+    margin-left: 5px;
+  }
+  /*right2-part3*/
+  .right2-part3{
+    display:flex;
+    width: 390px;
+    margin-left: 10px;
+    margin-top:20px;
+    justify-content: space-between;
+    font-size: 16px;
+  }
+  .dash1{
+    margin-top: 2px;
+  }
+  .kindaship, .kindaguarantee, 
+  .kindapayment{
+    font-style: italic;
+  }
+  
+  /*content-line*/
+  .content-line{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    height: 0px;
+  }
+  .line4{
+    width: 100%;
+    height: 1px;
+  }
+  /*content-related-products*/
+  .content-related-products{
+    width:auto;
+  }
+  .titlename{
+    position: relative;
+    width:100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  .title-name{
+    position: relative;
+    font-size: 35px;
+    width: max-content;
+    font-family: "Itim", cursive;
+    font-weight: bold;
+  }
+  .left, .right, .center{
+    width: 250px;
+    height: 250px;
+    z-index: 1;
+  }
+  /*footer*/
+  .footer{
+    background-color: #0e333c;
+    padding-bottom: 100px;
+    padding-top: 200px;
+  }
+  .footer .main{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+    font-family: "Aref Ruqaa Ink", serif;
+  }
+  .footer .main .location .bottom3{
+    display: flex;
+    text-decoration: underline;
+  }
+  .footer .main .main_child{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer .main .main_child .bottom3{
+    position: relative;
+    color: #ABABAB;
+  }
+  .footer .main .main_child .top3{
+    font-size: 20px;
+  }
+  .footer .main .main_child .bottom3 input{
+    height: 25px;
+    padding-left: 5px;
+    outline: none;
+  }
+  .footer .main .subcribe .bottom3 i{
+    padding: 5px 5px;
+    position: absolute;
+    background-color: #9d6939;
+    color: white;
+    right: 0px
+  }
+  .footer .line_copyright{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .footer .line_copyright .line{
+    width: 80%;
+    height: 1px;
+    background-color: #ABABAB;
+    display: flex;
+  }
+  .footer .line_copyright p{
+    width: 80%;
+    transform: translateX(50px);
+    color: #ABABAB;
+  }
+}
+@media screen and (min-width:946px) and (max-width: 1105px) {
+  /*search-categories*/
+  .frame-wrapper, .frame-search-categories{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+  }
+  .frame-wrapper{
+    position: relative;
+    align-self: stretch;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .frame-search-categories{
+    width:100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    display: flex;
+  }
+  
+  .frame-child2, .frame-child2-inner, 
+  .content-product, .content-parent{
+    margin-top: 33px;
+  }
+  .content-parent{
+    flex-direction: row;
+  }
+  /*content-product*/
+  .content-product{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+  }
+  .tagsale{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: -8;
+  }
+  .rectangle-group{
+    background-color: #F6E7D7;
+    border: none;
+    width: 36px;
+    height: 30px;
+  }
+  /*Hinh anh san pham lon*/
+  .content-product-left img{
+    width: 380px;
+    height: 380px;
+    position: relative;
+    object-fit: cover;
+    z-index: -9;
+  }
+  .hinh1{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  /*Noi dung va gia tien san pham*/
+  .content-product-right{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right1*/
+  .right1{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .right1 .name{
+    margin-top: -5px;
+    font-size: 30px;
+    max-width: 350px;
+  }
+  .right1 .status{
+    margin-top: 3px;
+    font-size: 15px;
+    max-width: 350px;
+  }
+  
+  .line-2{
+    margin-top: 25px;
+    width: 100%;
+  }
+  
+  /*right2*/
+  .right2{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right2-part1*/
+  .right2-part1, .stars{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .right2-part1{
+    margin-top: 5px;
+  }
+  .stars{
+    margin-left: 10px;
+    width: 120px;
+    height: 24px;
+    justify-content: space-between;
+  }
+  .customers, .numbervote{
+    font-size: 14px;
+  }
+  /*right2-part2*/
+  .right2-part2{
+    margin-top: 30px;
+  }
+  /*right2-part2-child1*/
+  .right2-part2-child1{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .salevalue{
+    margin-left: 10px;
+    margin-top: -5px;
+    font-size: 25px;
+    font-family: "Itim", cursive;
+    font-weight:550;
+    font-style: normal;
+  }
+  .originalprice{
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+  .originvalue{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    font-size: 15px;
+  }
+  /*right2-part2-child2*/
+  .right2-part2-child2{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  /*child2-left*/
+  .child2-left{
+    display: flex;
+    flex-direction: column;
+  }
+  .quantity-control{
+    display: inline-flex;
+  }
+  .quantity-control span{
+    font-size: 16px;
+  }
+  .input-container {
+    display: flex; 
+    align-items: center; 
+    width: 80px; 
+    margin-left: 15px;
+    margin-top: -3px;
+  }
+  .input-container button{
+    text-align: center;
+    display: inline-block; 
+    width: 20px; 
+    height: 30px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+  .input-container .decrease{
+    border-right: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .input-container .increase{
+    border-left: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .numbers {
+    width: 40px; 
+    border: 0.5px solid #ccc; 
+    border-left: none;
+    border-right: none;
+    height: 30px;
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+  }
+  .child2-left .buy{
+    text-align: center;
+    display: inline-block; 
+    width: 150px; 
+    height: 50px;
+    border: none;
+    background-color: #0E333C;
+    cursor: pointer;
+    color: white;
+    font-family: "Itim", cursive;
+    font-size: 16px;
+    margin-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-left .buy:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  /*child2-right*/
+  .child2-right{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .sizes{
+    display: inline-flex;
+  }
+  .sizes span{
+    font-size: 16px;
+  }
+  .size-selection{
+    display: flex; 
+    align-items: center; 
+    width: 80px; 
+    margin-left: 15px;
+    margin-top: -3px;
+  }
+  .drop-down li {
+    width: 70px;
+  }
+  .size-selection button{
+    text-align: center;
+    display: inline-block; 
+    width: 30px; 
+    height: 30px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    border-left: none;
+    cursor: pointer;
+  }
+  .size-numbers{
+    width: 50px; 
+    border: 0.5px solid #ccc; 
+    border-right: none;
+    height: 30px;
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+  }
+  .child2-right .add-to-cart{
+    text-align: center;
+    display: inline-block; 
+    width: 150px; 
+    height: 50px;
+    border: #0E333C;
+    cursor: pointer;
+    color: black;
+    font-family: "Itim", cursive;
+    font-size: 16px;
+    margin-top: 25px;
+    margin-left: 3px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-right .add-to-cart:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  .fa-solid.fa-cart-shopping{
+    margin-left: 5px;
+  }
+  /*right2-part3*/
+  .right2-part3{
+    display:flex;
+    width: 300px;
+    margin-left: 10px;
+    margin-top:20px;
+    justify-content: space-between;
+    font-size: 16px;
+  }
+  .dash1{
+    margin-top: 2px;
+  }
+  .kindaship, .kindaguarantee, 
+  .kindapayment{
+    font-style: italic;
+  }
+  
+  /*content-line*/
+  .content-line{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    height: 0px;
+  }
+  .line4{
+    width: 100%;
+    height: 1px;
+  }
+  /*content-related-products*/
+  .content-related-products{
+    width:auto;
+  }
+  .titlename{
+    position: relative;
+    width:100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  .title-name{
+    position: relative;
+    font-size: 25px;
+    width: max-content;
+    font-family: "Itim", cursive;
+    font-weight: bold;
+  }
+  .left, .right, .center{
+    width: 210px;
+    height: 220px;
+    z-index: 1;
+  }
+  .rectangleicon1{
+    background-color: #F6E7D7;
+    border: none;
+    width: 32px;
+    height: 32px;
+  }
+  .salevalue1, .salevalue2, .salevalue3{
+    font-size: 14px;
+    font-family: "Itim", cursive;
+    font-style: normal;
+  }
+  .originalprice1, .originalprice2, .originalprice3{
+    font-size: 12px;
+  }
+  .originvalue1, .originvalue2, .originvalue3{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    text-decoration-line: line-through;
+  }
+  .info-name1, .info-name2, .info-name3
+  {
+    font-size: 18px;
+    align-items: center;
+  }
+  .icon1{
+    width: 210px;
+  }
+  /*footer*/
+  .footer{
+    background-color: #0e333c;
+    padding-bottom: 100px;
+    padding-top: 200px;
+  }
+  .footer .main{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+    font-family: "Aref Ruqaa Ink", serif;
+  }
+  .footer .main .location .bottom3{
+    display: flex;
+    text-decoration: underline;
+  }
+  .footer .main .main_child{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer .main .main_child .bottom3{
+    position: relative;
+    color: #ABABAB;
+  }
+  .footer .main .main_child .top3{
+    font-size: 20px;
+  }
+  .footer .main .main_child .bottom3 input{
+    height: 25px;
+    padding-left: 5px;
+    outline: none;
+  }
+  .footer .main .subcribe .bottom3 i{
+    padding: 5px 5px;
+    position: absolute;
+    background-color: #9d6939;
+    color: white;
+    right: 0px
+  }
+  .footer .line_copyright{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .footer .line_copyright .line{
+    width: 80%;
+    height: 1px;
+    background-color: #ABABAB;
+    display: flex;
+  }
+  .footer .line_copyright p{
+    width: 80%;
+    transform: translateX(50px);
+    color: #ABABAB;
+  }
+}
+@media only screen and (min-width: 830px) and (max-width: 946px) {
+  .frame-child2, .frame-child2-inner, 
+  .content-product, .content-parent{
+    margin-top: 33px;
+  }
+  .content-parent{
+    flex-direction: row;
+  }
+  /*content-product*/
+  .content-product{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+  }
+  .tagsale{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: -8;
+  }
+  .rectangle-group{
+    background-color: #F6E7D7;
+    border: none;
+    width: 36px;
+    height: 30px;
+  }
+  /*Hinh anh san pham lon*/
+  .content-product-left-center {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .content-product-left img{
+    width: 330px;
+    height: 330px;
+    position: relative;
+    object-fit: cover;
+    z-index: -9;
+  }
+  .hinh1{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+  }
+  /*Noi dung va gia tien san pham*/
+  .content-product-right{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right1*/
+  .right1{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .right1 .name{
+    margin-top: -5px;
+    font-size: 22px;
+    max-width: 300px;
+  }
+  .right1 .status{
+    margin-top: 3px;
+    font-size: 12px;
+    max-width: 300px;
+  }
+  
+  .line-2{
+    margin-top: 22px;
+    width: 100%;
+  }
+  
+  /*right2*/
+  .right2{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right2-part1*/
+  .right2-part1, .stars{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .right2-part1{
+    margin-top: 5px;
+  }
+  .stars{
+    margin-left: 10px;
+    width: 80px;
+    height: 24px;
+    justify-content: space-between;
+  }
+  .customers, .numbervote{
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  /*right2-part2*/
+  .right2-part2{
+    margin-top: 15px;
+  }
+  /*right2-part2-child1*/
+  .right2-part2-child1{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .salevalue{
+    margin-left: 10px;
+    margin-top: -5px;
+    font-size: 18px;
+    font-family: "Itim", cursive;
+    font-weight:550;
+    font-style: normal;
+  }
+  .originalprice{
+    margin-left: 10px;
+    margin-top: -4px;
+  }
+  .originvalue{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    font-size: 12px;
+  }
+  /*right2-part2-child2*/
+  .right2-part2-child2{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  /*child2-left*/
+  .child2-left{
+    display: flex;
+    flex-direction: column;
+  }
+  .quantity-control{
+    display: inline-flex;
+  }
+  .quantity-control span{
+    font-size: 14px;
+  }
+  .input-container {
+    display: flex; 
+    align-items: center; 
+    width: 60px; 
+    margin-left: 12px;
+    margin-top: 0px;
+    height: 20px; 
+  }
+  .input-container button{
+    text-align: center;
+    display: inline-block; 
+    width: 15px; 
+    height: 20px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+  .input-container .decrease{
+    border-right: none;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .input-container .increase{
+    border-left: none;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .numbers {
+    width: 30px; 
+    border: 0.5px solid #ccc; 
+    border-left: none;
+    border-right: none;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    font-size: 12px;
+  }
+  .child2-left .buy{
+    text-align: center;
+    display: inline-block; 
+    width: 100px; 
+    height: 40px;
+    border: none;
+    background-color: #0E333C;
+    cursor: pointer;
+    color: white;
+    font-family: "Itim", cursive;
+    font-size: 12px;
+    margin-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-left .buy:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  /*child2-right*/
+  .child2-right{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .sizes{
+    display: inline-flex;
+  }
+  .sizes span{
+    font-size: 14px;
+  }
+  .size-selection{
+    display: flex; 
+    align-items: center; 
+    width: 60px; 
+    margin-left: 15px;
+    margin-top: 0px;
+  }
+  .drop-down li{
+    width:50px;
+  }
+  .drop-down{
+    font-size: 12px;
+  }
+  .size-selection button{
+    text-align: center;
+    display: inline-block; 
+    width: 20px; 
+    height: 20px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    border-left: none;
+    cursor: pointer;
+  }
+  .size-numbers{
+    width: 40px; 
+    border: 0.5px solid #ccc; 
+    border-right: none;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    font-size: 12px;
+  }
+  .child2-right .add-to-cart{
+    text-align: center;
+    display: inline-block; 
+    width: 110px; 
+    height: 40px;
+    border: #0E333C;
+    cursor: pointer;
+    color: black;
+    font-family: "Itim", cursive;
+    font-size: 12px;
+    margin-top: 25px;
+    margin-left: 3px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-right .add-to-cart:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  .fa-solid.fa-cart-shopping{
+    margin-left: 5px;
+  }
+  /*right2-part3*/
+  .right2-part3{
+    display:flex;
+    width: 240px;
+    margin-left: 10px;
+    margin-top:20px;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  .dash1{
+    margin-top: 2px;
+  }
+  .kindaship, .kindaguarantee, 
+  .kindapayment{
+    font-style: italic;
+  }
+  
+  /*content-line*/
+  .content-line{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    height: 0px;
+  }
+  .line4{
+    width: 100%;
+    height: 1px;
+  }
+  /*content-related-products*/
+  .title-name{
+    position: relative;
+    font-size: 25px;
+    width: max-content;
+    font-family: "Itim", cursive;
+    font-weight: bold;
+  }
+  .left, .right, .center{
+    width: 180px;
+    height: 200px;
+    z-index: 1;
+  }
+  .tagsale1, .tagsale2, .tagsale3{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    z-index: 2;
+    margin-left: 19px;
+    margin-top: -10px;
+  }
+  .rectangleicon1{
+    background-color: #F6E7D7;
+    border: none;
+    width: 32px;
+    height: 24px;
+  }
+  .salevalue1, .salevalue2, .salevalue3{
+    font-size: 12px;
+    font-family: "Itim", cursive;
+    font-style: normal;
+  }
+  .originalprice1, .originalprice2, .originalprice3{
+    font-size: 11px;
+  }
+  .info-name1
+  {
+    font-size: 15px;
+    align-items: center;
+  }
+  .icon1{
+    width: 180px;
+    margin-bottom: 30px;
+    margin-top: -34px;
+  }
+  /*footer*/
+  .footer{
+    background-color: #0e333c;
+    padding-bottom: 100px;
+    padding-top: 200px;
+  }
+  .footer .main{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+    font-family: "Aref Ruqaa Ink", serif;
+    font-size: 14px;
+  }
+  .footer .main .location .bottom3{
+    display: flex;
+    text-decoration: underline;
+  }
+  .footer .main .main_child{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer .main .main_child .bottom3{
+    position: relative;
+    color: #ABABAB;
+  }
+  .footer .main .main_child .top3{
+    font-size: 14px;
+  }
+  .footer .main .main_child .bottom3 input{
+    height: 25px;
+    padding-left: 5px;
+    outline: none;
+  }
+  .footer .main .subcribe .bottom3 i{
+    padding: 5px 5px;
+    position: absolute;
+    background-color: #9d6939;
+    color: white;
+    right: 0px
+  }
+  .footer .line_copyright{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .footer .line_copyright .line{
+    width: 80%;
+    height: 1px;
+    background-color: #ABABAB;
+    display: flex;
+  }
+  .footer .line_copyright p{
+    width: 80%;
+    transform: translateX(50px);
+    color: #ABABAB;
+  }
+}
+@media only screen and (min-width: 692px) and (max-width: 830px) {
+  /*search-categories*/
+  .frame-wrapper, .frame-search-categories{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+  }
+  .frame-wrapper{
+    position: relative;
+    align-self: stretch;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .frame-search-categories{
+    width:100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    display: flex;
+  }
+  .search{
+    position: relative;
+    width:100%;
+    height: 50.5px;
+    background-color: #fff9f4;
+    box-sizing: border-box;
+    margin: auto;
+  }
+  .search-box{
+    padding: 0 24px;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border: 0.5px solid #ccc;
+    border-radius: 100px;
+    font-size: 18px;
+  }
+  button[type="submit"] {
+    position: absolute;
+    padding: 5px 10px;
+    width: 60px;
+    height: 50.5px;
+    cursor: pointer;
+    border-radius: 100px;
+    border: none;
+    left: 90%;
+    background-color: transparent;
+  }
+  input[type="text"]:active{
+    border: 0.5px solid #ccc;
+    font-size: 14px;
+  }
+  .categories{
+    display: flex;
+    width: 100%;
+    height: 24px;
+    margin-top: 20px;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  .collections:hover, .bracelets:hover, 
+  .rings:hover, .necklaces:hover, 
+  .earings:hover, .sales:hover{
+    font-weight: bold;
+    cursor: pointer;
+  }
+  /*line-1*/
+  .line1{
+    width: 100%;
+    height: 1px;
+  }
+  .frame-child2, .frame-child2-inner, 
+  .content-product, .content-parent{
+    margin-top: 33px;
+  }
+  .content-parent{
+    flex-direction: row;
+  }
+  /*content-product*/
+  .content-product{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+  }
+  .tagsale{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: 2;
+  }
+  .tagsale-res, .rectangle-group-res, .rectangle-res, .sale-res, .tagsale-res polygon{
+    display: inline-flex;
+  }
+  .tagsale-res{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: -8;
+  }
+  .rectangle-group-res{
+    background-color: #F6E7D7;
+    border: none;
+    width: 32px;
+    height: 28px;
+  }
+  .rectangle-group{
+    background-color: #F6E7D7;
+    display: none;
+    border: none;
+    width: 26px;
+    height: 20px;
+  }
+  .sale-res{
+    margin-top: 4px;
+    margin-left: 2px;
+  }
+  /*Hinh anh san pham lon*/
+  .content-product-left-center {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .content-product-left img{
+    width: 250px;
+    height: 250px;
+    position: relative;
+    object-fit: cover;
+    z-index: -9;
+  }
+  .hinh1{
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+  }
+  /*Noi dung va gia tien san pham*/
+  .content-product-right{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right1*/
+  .right1{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .right1 .name{
+    margin-top: -5px;
+    font-size: 20px;
+    max-width:250px;
+  }
+  .right1 .status{
+    margin-top: 3px;
+    font-size: 12px;
+    max-width:250px;
+  }
+  
+  .line-2{
+    margin-top: 35px;
+    width: 100%;
+  }
+  
+  /*right2*/
+  .right2{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right2-part1*/
+  .right2-part1, .stars{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .right2-part1{
+    margin-top: 5px;
+  }
+  .stars{
+    margin-left: 10px;
+    width: 80px;
+    height: 12px;
+    justify-content: space-between;
+  }
+  .customers, .numbervote{
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  /*right2-part2*/
+  .right2-part2{
+    margin-top: 15px;
+  }
+  /*right2-part2-child1*/
+  .right2-part2-child1{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .salevalue{
+    margin-left: 10px;
+    margin-top: -5px;
+    font-size: 18px;
+    font-family: "Itim", cursive;
+    font-weight:550;
+    font-style: normal;
+  }
+  .originalprice{
+    margin-left: 15px;
+    margin-top: 0px;
+  }
+  .originvalue{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    font-size: 10px;
+  }
+  /*right2-part2-child2*/
+  .right2-part2-child2{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  /*child2-left*/
+  .child2-left{
+    display: flex;
+    flex-direction: column;
+  }
+  .quantity-control{
+    display: inline-flex;
+  }
+  .quantity-control span{
+    font-size: 12px;
+  }
+  .input-container {
+    display: flex; 
+    align-items: center; 
+    width: 60px; 
+    margin-left: 10px;
+    margin-top: -4px;
+  }
+  .input-container button{
+    text-align: center;
+    display: inline-block; 
+    width: 15px; 
+    height: 20px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+  .input-container .decrease{
+    border-right: none;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .input-container .increase{
+    border-left: none;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .numbers {
+    width: 30px; 
+    border: 0.5px solid #ccc; 
+    border-left: none;
+    border-right: none;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    font-size: 12px;
+  }
+  .child2-left .buy{
+    text-align: center;
+    display: inline-block; 
+    width: 100px; 
+    height: 30px;
+    border: none;
+    background-color: #0E333C;
+    cursor: pointer;
+    color: white;
+    font-family: "Itim", cursive;
+    font-size: 14px;
+    margin-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-left .buy:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  /*child2-right*/
+  .child2-right{
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+  }
+  .sizes{
+    display: inline-flex;
+  }
+  .sizes span{
+    font-size: 12px;
+  }
+  .size-selection{
+    display: flex; 
+    align-items: center; 
+    width: 50px; 
+    margin-left: 10px;
+    margin-top: -4px;
+  }
+  .size-selection button{
+    text-align: center;
+    display: inline-block; 
+    width: 20px; 
+    height: 20px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    border-left: none;
+    cursor: pointer;
+  }
+  .size-numbers{
+    width: 30px; 
+    border: 0.5px solid #ccc; 
+    border-right: none;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    font-size: 12px;
+  }
+  .drop-down li{
+    width:40px;
+  }
+  .drop-down{
+    font-size: 12px;
+  }
+  .child2-right .add-to-cart{
+    text-align: center;
+    display: inline-block; 
+    width: 100px; 
+    height: 30px;
+    border: #0E333C;
+    cursor: pointer;
+    color: black;
+    font-family: "Itim", cursive;
+    font-size: 12px;
+    margin-top: 25px;
+    margin-left: 0px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-right .add-to-cart:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  .fa-solid.fa-cart-shopping{
+    margin-left: -2px;
+  }
+  /*right2-part3*/
+  .right2-part3{
+    display:flex;
+    width: 220px;
+    margin-left: 10px;
+    margin-top:20px;
+    justify-content: space-between;
+    font-size: 10px;
+  }
+  .dash1{
+    margin-top: 2px;
+  }
+  .kindaship, .kindaguarantee, 
+  .kindapayment{
+    font-style: italic;
+  }
+  
+  /*content-line*/
+  .content-line{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    height: 0px;
+  }
+  .line4{
+    width: 100%;
+    height: 1px;
+  }
+  /*content-related-products*/
+  .title-name{
+    position: relative;
+    font-size: 20px;
+    width: max-content;
+    font-family: "Itim", cursive;
+    font-weight: bold;
+  }
+  
+  .tagsale1-res, .rectangleicon1-res, .rectangle1-res, .sale1-res, .tagsale1-res polygon{
+    display: inline-flex;
+  }
+  .tagsale2-res, .rectangleicon2-res, .rectangle2-res, .sale2-res, .tagsale2-res polygon{
+    display: inline-flex;
+  }
+  .tagsale3-res, .rectangleicon3-res, .rectangle3-res, .sale3-res, .tagsale3-res polygon{
+    display: inline-flex;
+  }
+  .tagsale1-res, .tagsale2-res, .tagsale3-res{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    z-index: 2;
+    margin-left: 19px;
+    margin-top: -10px;
+  }
+  .rectangleicon1-res, .rectangleicon2-res, .rectangleicon3-res{
+    background-color: #F6E7D7;
+    border: none;
+    width: 28px;
+    height: 28px;
+  }
+  .tagsale1, .tagsale2, .tagsale3{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    z-index: 2;
+    margin-left: 19px;
+    margin-top: -10px;
+  }
+  .rectangleicon1, .rectangleicon2, .rectangleicon3{
+    background-color: #F6E7D7;
+    border: none;
+    display:none;
+    width: 32px;
+    height: 20px;
+  }
+  .sale1-res, .sale2-res, .sale3-res{
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 1px;
+  }
+  .salevalue1, .salevalue2, .salevalue3{
+    font-size: 13px;
+    font-family: "Itim", cursive;
+    font-style: normal;
+  }
+  .originalprice1, .originalprice2, .originalprice3{
+    font-size: 11px;
+  }
+  .originvalue1, .originvalue2, .originvalue3{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    text-decoration-line: line-through;
+  }
+  .left, .right, .center{
+    width: 160px;
+    height: 160px;
+    z-index: 1;
+  }
+  .info-name1
+  {
+    font-size: 14px;
+    align-items: center;
+  }
+  .circle{
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: black;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #000;
+  }
+  .icon1{
+    display: none;
+    z-index: 1;
+    width: 160px;
+    margin-top: -34px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-plus1{
+    display: flex;
+    margin-left: 16px;
+  }
+  .fa-solid.fa-plus
+  {
+    font-size:12px;
+    margin-left: -13.4px;
+    margin-top: 2.4px;
+  }
+  .fa-solid.fa-cart-plus
+  {
+    font-size:10px;
+    margin-left: -14px;
+    margin-top: 4px;
+  }
+  /*footer*/
+  .footer{
+    background-color: #0e333c;
+    padding-bottom: 100px;
+    padding-top: 200px;
+  }
+  .footer .main{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+    font-family: "Aref Ruqaa Ink", serif;
+    font-size: 14px;
+  }
+  .footer .main .location .bottom3{
+    display: flex;
+    text-decoration: underline;
+  }
+  .footer .main .main_child{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer .main .main_child .bottom3{
+    position: relative;
+    color: #ABABAB;
+  }
+  .footer .main .main_child .top3{
+    font-size: 14px;
+  }
+  .footer .main .main_child .bottom3 input{
+    height: 25px;
+    padding-left: 5px;
+    outline: none;
+  }
+  .footer .main .subcribe .bottom3 i{
+    padding: 5px 5px;
+    position: absolute;
+    background-color: #9d6939;
+    color: white;
+    right: 0px
+  }
+  .footer .line_copyright{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .footer .line_copyright .line{
+    width: 80%;
+    height: 1px;
+    background-color: #ABABAB;
+    display: flex;
+  }
+  .footer .line_copyright p{
+    width: 80%;
+    transform: translateX(50px);
+    color: #ABABAB;
+  }
+}
+/* 2 content-product-related*/
+@media only screen and (min-width:610px) and (max-width: 691px){
+
+  .frame-child2, .frame-child2-inner, 
+  .content-product, .content-parent{
+    margin-top: 33px;
+  }
+  .content-parent{
+    flex-direction: row;
+  }
+  /*content-product*/
+  .content-product{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+  }
+  .tagsale{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: 2;
+  }
+  .tagsale-res, .rectangle-group-res, .rectangle-res, .sale-res, .tagsale-res polygon{
+    display: inline-flex;
+  }
+  .tagsale-res{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: -8;
+  }
+  .rectangle-group-res{
+    background-color: #F6E7D7;
+    border: none;
+    width: 32px;
+    height: 28px;
+  }
+  .rectangle-group{
+    background-color: #F6E7D7;
+    display: none;
+    border: none;
+    width: 26px;
+    height: 20px;
+  }
+  .sale-res{
+    margin-top: 4px;
+    margin-left: 2px;
+  }
+  /*Hinh anh san pham lon*/
+  .content-product-left-center {
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .content-product-left img{
+    width: 230px;
+    height: 230px;
+    position: relative;
+    object-fit: cover;
+    z-index: -9;
+  }
+  .content-product-center{
+    display:none;
+  }
+  .hinh1{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+  .outer-thumb1, .content-product-center1{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  /*Noi dung va gia tien san pham*/
+  .content-product-right{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right1*/
+  .right1{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .right1 .name{
+    margin-top: -5px;
+    font-size: 18px;
+    max-width:230px;
+  }
+  .right1 .status{
+    margin-top: 3px;
+    font-size: 12px;
+    max-width:230px;
+  }
+  
+  .line-2{
+    margin-top: 35px;
+    width: 100%;
+  }
+  
+  /*right2*/
+  .right2{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right2-part1*/
+  .right2-part1, .stars{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .right2-part1{
+    margin-top: 5px;
+  }
+  .stars{
+    margin-left: 10px;
+    width: 80px;
+    height: 24px;
+    justify-content: space-between;
+  }
+  .customers, .numbervote{
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  /*right2-part2*/
+  .right2-part2{
+    margin-top: 15px;
+  }
+  /*right2-part2-child1*/
+  .right2-part2-child1{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .salevalue{
+    margin-left: 10px;
+    margin-top: -5px;
+    font-size: 18px;
+    font-family: "Itim", cursive;
+    font-weight:550;
+    font-style: normal;
+  }
+  .originalprice{
+    margin-left: 8px;
+    margin-top: -4px;
+  }
+  .originvalue{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    font-size: 12px;
+  }
+  /*right2-part2-child2*/
+  .right2-part2-child2{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  /*child2-left*/
+  .child2-left{
+    display: flex;
+    flex-direction: column;
+  }
+  .quantity-control{
+    display: inline-flex;
+  }
+  .quantity-control span{
+    font-size: 12px;
+  }
+  .input-container {
+    display: flex; 
+    align-items: center; 
+    width: 60px; 
+    margin-left: 12px;
+    margin-top: -4px;
+  }
+  .input-container button{
+    text-align: center;
+    display: inline-block; 
+    width: 15px; 
+    height: 20px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+  .input-container .decrease{
+    border-right: none;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .input-container .increase{
+    border-left: none;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .numbers {
+    width: 30px; 
+    border: 0.5px solid #ccc; 
+    border-left: none;
+    border-right: none;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    font-size: 12px;
+  }
+  .child2-left .buy{
+    text-align: center;
+    display: inline-block; 
+    width: 100px; 
+    height: 30px;
+    border: none;
+    background-color: #0E333C;
+    cursor: pointer;
+    color: white;
+    font-family: "Itim", cursive;
+    font-size: 14px;
+    margin-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-left .buy:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  /*child2-right*/
+  .child2-right{
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+  }
+  .sizes{
+    display: inline-flex;
+  }
+  .sizes span{
+    font-size: 12px;
+  }
+  .size-selection{
+    display: flex; 
+    align-items: center; 
+    width: 50px; 
+    margin-left: 12px;
+    margin-top: -4px;
+  }
+  .size-selection button{
+    text-align: center;
+    display: inline-block; 
+    width: 20px; 
+    height: 20px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    border-left: none;
+    cursor: pointer;
+  }
+  .size-numbers{
+    width: 30px; 
+    border: 0.5px solid #ccc; 
+    border-right: none;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    font-size: 12px;
+  }
+  .drop-down li{
+    width:40px;
+  }
+  .drop-down{
+    font-size: 12px;
+  }
+  .child2-right .add-to-cart{
+    text-align: center;
+    display: inline-block; 
+    width: 100px; 
+    height: 30px;
+    border: #0E333C;
+    cursor: pointer;
+    color: black;
+    font-family: "Itim", cursive;
+    font-size: 12px;
+    margin-top: 25px;
+    margin-left: 0px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-right .add-to-cart:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  .fa-solid.fa-cart-shopping{
+    margin-left: -2px;
+  }
+  /*right2-part3*/
+  .right2-part3{
+    display:flex;
+    width: 220px;
+    margin-left: 10px;
+    margin-top:20px;
+    justify-content: space-between;
+    font-size: 10px;
+  }
+  .dash1{
+    margin-top: 2px;
+  }
+  .kindaship, .kindaguarantee, 
+  .kindapayment{
+    font-style: italic;
+  }
+  
+  /*content-line*/
+  .content-line{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    height: 0px;
+  }
+  .line4{
+    width: 100%;
+    height: 1px;
+  }
+  /*content-related-products*/
+  .titlename{
+    position: relative;
+    width:100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  .title-name{
+    position: relative;
+    font-size: 20px;
+    width: max-content;
+    font-family: "Itim", cursive;
+    font-weight: bold;
+  }
+  
+  .tagsale1-res, .rectangleicon1-res, .rectangle1-res, .sale1-res, .tagsale1-res polygon{
+    display: inline-flex;
+  }
+  .tagsale1-res{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    z-index: 2;
+    margin-left: 19px;
+    margin-top: -10px;
+  }
+  .rectangleicon1-res{
+    background-color: #F6E7D7;
+    border: none;
+    width: 28px;
+    height: 25px;
+  }
+  .tagsale1{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    z-index: 2;
+    margin-left: 19px;
+    margin-top: -10px;
+  }
+  .rectangleicon1{
+    background-color: #F6E7D7;
+    border: none;
+    display:none;
+    width: 32px;
+    height: 32px;
+  }
+  .sale1-res, .sale2-res, .sale3-res{
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 1px;
+  }
+  .salevalue1, .salevalue2, .salevalue3{
+    font-size: 13px;
+    font-family: "Itim", cursive;
+    font-style: normal;
+  }
+  .originalprice1, .originalprice2, .originalprice3{
+    font-size: 12px;
+  }
+  .originvalue1, .originvalue2, .originvalue3{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    text-decoration-line: line-through;
+  }
+  .info-name1, .info-name2, .info-name3
+  {
+    font-size: 14px;
+    align-items: center;
+  }
+  .left, .right, .center{
+    width: 180px;
+    height: 200px;
+    z-index: 1;
+  }
+ .circle{
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    border: black;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #000;
+  }
+.icon1{
+    display: none;
+    z-index: 1;
+    width: 104%;
+    margin-top: -30px;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-plus1{
+    display: flex;
+    margin-left: 18px;
+  }
+  .fa-solid.fa-plus
+  {
+    font-size:12px;
+    margin-left: -14.4px;
+  }
+  .fa-solid.fa-cart-plus
+  {
+    font-size:10px;
+    margin-left: -15px;
+    margin-top: 4px;
+  }
+  .icon-cart1{
+    display: flex;
+  }
+  /*footer*/
+  .footer{
+    background-color: #0e333c;
+    padding-bottom: 100px;
+    padding-top: 200px;
+  }
+  .footer .main{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 26px;
+    padding-right: 26px;
+    color: white;
+    font-family: "Aref Ruqaa Ink", serif;
+    font-size: 12px;
+  }
+  .footer .main .location .bottom3{
+    display: flex;
+    text-decoration: underline;
+  } 
+  .footer .main .main_child{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer .main .main_child .bottom3{
+    position: relative;
+    color: #ABABAB;
+  }
+  .footer .main .main_child .top3{
+    font-size: 12px;
+  }
+  .footer .main .main_child .bottom3 input{
+    height: 25px;
+    padding-left: 5px;
+    outline: none;
+  }
+  .footer .main .subcribe .bottom3 i{
+    padding: 5px 5px;
+    position: absolute;
+    background-color: #9d6939;
+    color: white;
+    right: 0px
+  }
+  .footer .line_copyright{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .footer .line_copyright .line{
+    width: 80%;
+    height: 1px;
+    background-color: #ABABAB;
+    display: flex;
+  }
+  .footer .line_copyright p{
+    width: 80%;
+    transform: translateX(50px);
+    color: #ABABAB;
+  }
+}
+@media only screen and (max-width: 610px){
+  
+  .frame-child2, .frame-child2-inner, 
+  .content-product, .content-parent{
+    margin-top: 33px;
+  }
+  .content-parent{
+    flex-direction: row;
+  }
+  /*content-product*/
+  .content-product{
+    width: 498px;
+    display: flex;
+    flex-direction: column;
+  }
+  .tagsale{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: 2;
+  }
+  .tagsale-res, .rectangle-group-res, .rectangle-res, .sale-res, .tagsale-res polygon{
+    display: inline-flex;
+  }
+  .tagsale-res{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 34px;
+    margin-top: -15px;
+    z-index: -8;
+  }
+  .rectangle-group-res{
+    background-color: #F6E7D7;
+    border: none;
+    width: 32px;
+    height: 28px;
+  }
+  .rectangle-group{
+    background-color: #F6E7D7;
+    display: none;
+    border: none;
+    width: 26px;
+    height: 20px;
+  }
+  .sale-res{
+    margin-top: 4px;
+    margin-left: 2px;
+  }
+  /*Hinh anh san pham lon*/
+  .content-product-left-center {
+    margin: auto;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .content-product-left img{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    object-fit: cover;
+    z-index: -9;
+  }
+  .content-product-center1{
+    display:none;
+  }
+  .hinh1{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+  }
+  .content-product-center{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  /*Noi dung va gia tien san pham*/
+  .content-product-right{
+    margin: auto;
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+  /*right1*/
+  .right1{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .right1 .name{
+    margin-top: -5px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .right1 .status{
+    margin-top: 3px;
+    font-size: 14px;
+  }
+  
+  .line-2{
+    margin-top: 35px;
+    width: 282px;
+  }
+  
+  /*right2*/
+  .right2{
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*right2-part1*/
+  .right2-part1, .stars{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .right2-part1{
+    margin-top: 5px;
+  }
+  .stars{
+    margin-left: 10px;
+    width: 100px;
+    height: 24px;
+    justify-content: space-between;
+  }
+  .customers, .numbervote{
+    font-size: 14px;
+  }
+  /*right2-part2*/
+  .right2-part2{
+    margin-top: 15px;
+  }
+  /*right2-part2-child1*/
+  .right2-part2-child1{
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .salevalue{
+    margin-left: 10px;
+    margin-top: -5px;
+    font-size: 20px;
+    font-family: "Itim", cursive;
+    font-weight:550;
+    font-style: normal;
+  }
+  .originalprice{
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+  .originvalue{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    font-size: 13px;
+  }
+  /*right2-part2-child2*/
+  .right2-part2-child2{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  /*child2-left*/
+  .child2-left{
+    display: flex;
+    flex-direction: column;
+  }
+  .quantity-control{
+    display: inline-flex;
+  }
+  .quantity-control span{
+    font-size: 14px;
+  }
+  .input-container {
+    display: flex; 
+    align-items: center; 
+    width: 60px; 
+    margin-left: 15px;
+    margin-top: -4px;
+  }
+  .input-container button{
+    text-align: center;
+    display: inline-block; 
+    width: 15px; 
+    height: 20px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+  .input-container .decrease{
+    border-right: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .input-container .increase{
+    border-left: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .numbers {
+    width: 30px; 
+    border: 0.5px solid #ccc; 
+    border-left: none;
+    border-right: none;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    font-size: 14px;
+  }
+  .child2-left .buy{
+    text-align: center;
+    display: inline-block; 
+    width: 110px; 
+    height: 30px;
+    border: none;
+    background-color: #0E333C;
+    cursor: pointer;
+    color: white;
+    font-family: "Itim", cursive;
+    font-size: 14px;
+    margin-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-left .buy:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  /*child2-right*/
+  .child2-right{
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+  }
+  .sizes{
+    display: inline-flex;
+  }
+  .sizes span{
+    font-size: 14px;
+  }
+  .size-selection{
+    display: flex; 
+    align-items: center; 
+    width: 50px; 
+    margin-left: 15px;
+    margin-top: -4px;
+  }
+  .size-selection button{
+    text-align: center;
+    display: inline-block; 
+    width: 20px; 
+    height: 20px; 
+    border: 0.5px solid #ccc;
+    background-color: white;
+    border-left: none;
+    cursor: pointer;
+  }
+  .size-numbers{
+    width: 30px; 
+    border: 0.5px solid #ccc; 
+    border-right: none;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    font-size: 14px;
+  }
+  .drop-down li{
+    width:40px;
+  }
+  .drop-down{
+    font-size: 14px;
+  }
+  .child2-right .add-to-cart{
+    text-align: center;
+    display: inline-block; 
+    width: 120px; 
+    height: 30px;
+    border: #0E333C;
+    cursor: pointer;
+    color: black;
+    font-family: "Itim", cursive;
+    font-size: 14px;
+    margin-top: 25px;
+    margin-left: 0px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+  .child2-right .add-to-cart:hover{
+    box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  }
+  .fa-solid.fa-cart-shopping{
+    margin-left: -2px;
+  }
+  /*right2-part3*/
+  .right2-part3{
+    display:flex;
+    width: 250px;
+    margin-left: 10px;
+    margin-top:20px;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  .dash1{
+    margin-top: 2px;
+  }
+  .kindaship, .kindaguarantee, 
+  .kindapayment{
+    font-style: italic;
+  }
+  
+  /*content-line*/
+  .content-line{
+    margin-top: 50px;
+    display: flex;
+    width: 498px;
+    height: 0px;
+  }
+  .line4{
+    width: 498px;
+    height: 1px;
+  }
+  /*content-related-products*/
+  .content-related-products{
+    width:auto;
+  }
+  .titlename{
+    position: relative;
+    width: 498px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  .title-name{
+    position: relative;
+    font-size: 20px;
+    width: max-content;
+    font-family: "Itim", cursive;
+    font-weight: bold;
+  }
+  .left, .right, .center{
+    width: 214px;
+    height: 214px;
+    z-index: 1;
+  }
+  .img-relation {
+    display: flex;
+    justify-content: space-between;
+    width: 498px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  } 
+  .tagsale1-res, .rectangleicon1-res, .rectangle1-res, .sale1-res, .tagsale1-res polygon{
+    display: inline-flex;
+  }
+  .tagsale2-res, .rectangleicon2-res, .rectangle2-res, .sale2-res, .tagsale2-res polygon{
+    display: inline-flex;
+  }
+  .tagsale3-res, .rectangleicon3-res, .rectangle3-res, .sale3-res, .tagsale3-res polygon{
+    display: inline-flex;
+  }
+  .tagsale1-res, .tagsale2-res, .tagsale3-res{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    z-index: 2;
+    margin-left: 19px;
+    margin-top: -10px;
+  }
+  .rectangleicon1-res{
+    background-color: #F6E7D7;
+    border: none;
+    width: 28px;
+    height: 25px;
+  }
+  .tagsale1, .tagsale2, .tagsale3{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    z-index: 2;
+    margin-left: 19px;
+    margin-top: -10px;
+  }
+  .rectangleicon1{
+    background-color: #F6E7D7;
+    border: none;
+    display:none;
+    width: 32px;
+    height: 32px;
+  }
+  .sale1-res, .sale2-res, .sale3-res{
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 1px;
+  }
+  .salevalue1, .salevalue2, .salevalue3{
+    font-size: 13px;
+    font-family: "Itim", cursive;
+    font-style: normal;
+  }
+  .originalprice1, .originalprice2, .originalprice3{
+    font-size: 12px;
+  }
+  .originvalue1, .originvalue2, .originvalue3{
+    color: gray;
+    font-family: "Itim", cursive;
+    font-style: normal;
+    z-index: 1;
+    text-decoration-line: line-through;
+  }
+  .info-name1, .info-name2, .info-name3
+  {
+    font-size: 14px;
+    align-items: center;
+  }
+  .left, .right, .center{
+    width: 190px;
+    height: 190px;
+    z-index: 1;
+  }
+  .circle{
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    border: black;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #000;
+  }
+  .icon1{
+    display: none;
+    z-index: 1;
+    width: 190px;
+    margin-top: -34px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-plus1{
+    display: flex;
+    margin-left: 16px;
+  }
+  .fa-solid.fa-plus
+  {
+    font-size:12px;
+    margin-left: -14.4px;
+  }
+  .fa-solid.fa-cart-plus
+  {
+    font-size:10px;
+    margin-left: -15px;
+    margin-top: 4px;
+  }
+  /*footer*/
+  .footer{
+    background-color: #0e333c;
+    padding-bottom: 100px;
+    padding-top: 200px;
+    width:598px;
+  }
+  .footer .main{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 26px;
+    padding-right: 26px;
+    color: white;
+    font-family: "Aref Ruqaa Ink", serif;
+    font-size: 12px;
+  }
+  .footer .main .location .bottom3{
+    display: flex;
+    text-decoration: underline;
+  } 
+  .footer .main .main_child{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer .main .main_child .bottom3{
+    position: relative;
+    color: #ABABAB;
+  }
+  .footer .main .main_child .top3{
+    font-size: 12px;
+  }
+  .footer .main .main_child .bottom3 input{
+    height: 25px;
+    padding-left: 5px;
+    outline: none;
+  }
+  .footer .main .subcribe .bottom3 i{
+    padding: 5px 5px;
+    position: absolute;
+    background-color: #9d6939;
+    color: white;
+    right: 0px
+  }
+  .footer .line_copyright{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .footer .line_copyright .line{
+    width: 446px;
+    height: 1px;
+    background-color: #ABABAB;
+    display: flex;
+  }
+  .footer .line_copyright p{
+    width: 446px;
+    transform: translateX(50px);
+    color: #ABABAB;
+  }
+}
+
+
+/*asdfasdfasdfasdf*/
+.swiper-android .swiper-slide, .swiper-ios .swiper-slide, .swiper-wrapper {
+    transform: translate3d(0px, 0, 0);
+    min-height: 258px;
+    max-height: 258px;
+}

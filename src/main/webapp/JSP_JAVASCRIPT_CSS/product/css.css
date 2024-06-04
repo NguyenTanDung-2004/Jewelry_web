@@ -247,6 +247,12 @@ body main .title_search .child{
 body main .title_search .name{
     font-weight: 600;
 }
+.linkSearch{
+	text-decoration: none !important;
+  color: black !important;
+  align-items: center;
+  flex-direction: column;
+}
 /*line2*/
 body main .line2{
     padding-left: 43px;
@@ -336,6 +342,20 @@ body main .content .right .sanpham {
     cursor: pointer;
     height: 350px;
     position: relative;
+    color:black;
+}
+.links {
+  text-decoration: none !important;
+  color: black !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.links img {
+    margin-bottom: 5px; /* Khoảng cách 5px dưới hình ảnh */
+}
+.links .content1 {
+    margin-bottom: 5px; /* Khoảng cách 5px dưới .content1 */
 }
 body main .content .right .sanpham .sale{
 	padding: 10px 10px;

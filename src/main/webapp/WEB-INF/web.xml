@@ -59,4 +59,84 @@
 		<url-pattern>/servlet_product_from_product</url-pattern>
 	</servlet-mapping>
 	
+	
+	<!-- TraGiang -->
+	<!-- servlet_account-->
+	<servlet>
+		<servlet-name>account</servlet-name>
+		<servlet-class>servlet.servlet_account</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>account</servlet-name>
+		<url-pattern>/account</url-pattern>
+	</servlet-mapping>
+	
+		  <!-- servlet_account_receive_request-->
+	<servlet>
+		<servlet-name>servlet_account_receive_request</servlet-name>
+		<servlet-class>servlet.servlet_account_receive_request</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet_account_receive_request</servlet-name>
+		<url-pattern>/servlet_account_receive_request</url-pattern>
+	</servlet-mapping>
+	<!-- TraGiang -->
+	
+	
+	<!-- Quynh Anh -->
+		<servlet>
+	    <servlet-name>servlet_detail_product</servlet-name>
+	    <servlet-class>servlet.servlet_detail_product</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>servlet_detail_product</servlet-name>
+	    <url-pattern>/product/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>servlet_add_to_cart</servlet-name>
+	    <servlet-class>servlet.servlet_add_to_cart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>servlet_add_to_cart</servlet-name>
+	    <url-pattern>/add-to-cart</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>check_product_in_cart</servlet-name>
+	    <servlet-class>servlet.check_product_in_cart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>check_product_in_cart</servlet-name>
+	    <url-pattern>/check-product-in-cart</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>servlet_buy_now</servlet-name>
+	    <servlet-class>servlet.servlet_buy_now</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>servlet_buy_now</servlet-name>
+	    <url-pattern>/buy</url-pattern>
+	</servlet-mapping>
+	<!-- Quynh Anh -->
+	
+	
+	<!-- Bao -->
+	<servlet>
+        <servlet-name>servlet_server</servlet-name>
+        <servlet-class>servlet.servlet_server</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servlet_server</servlet-name>
+        <url-pattern>/server</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>cart</servlet-name>
+        <servlet-class>servlet.servlet_cart</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cart</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
 </web-app>

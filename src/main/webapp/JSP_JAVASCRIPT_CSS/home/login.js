@@ -19,6 +19,7 @@
 			}
 		)
 	}
+		    
 	function submit_login() {
         var http = new XMLHttpRequest();
         http.open("POST", "http://localhost:8080/Jewelry_web/servlet_home_receive_request", true);
@@ -38,11 +39,15 @@
 			}
 			if (resp == "login_successfull"){
 				
-				window.location = "http://localhost:8080/Jewelry_web/product";
+				var returnUrl = sessionStorage.getItem("returnUrl");
+	                if (returnUrl) {
+	                    window.location = returnUrl; // Chuyển hướng đến trang bị lỗi
+	                    sessionStorage.removeItem("returnUrl");
+	                }else {
+	                window.location = "http://localhost:8080/Jewelry_web/product"; // Chuyển hướng đến trang sản phẩm
+	            }
 			}
-				   
-		    
         }
     }
-	
+
 	event_for_button_dangnhap();

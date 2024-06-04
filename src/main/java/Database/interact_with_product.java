@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import entry.Product;
+
 public class interact_with_product {
 	private static Connection conn;
 	 
@@ -162,15 +164,15 @@ public class interact_with_product {
 		return detail;
 	}
 	
-	public static ArrayList<String> get_related_products(int id){
+	public static ArrayList<Product> get_related_products(int id){
 		//trả về Danh sach nhung detail của related product (những sản phẩm cùng categories của sản phẩm đang hiện)
-		ArrayList<String> detail = new ArrayList<>();
+		Product product = new Product();
+		ArrayList<Product> relatedList = new ArrayList<Product>();
 	    ArrayList<Integer> relatedProducts = new ArrayList<Integer>();
-	    ArrayList<String> relatedList = new ArrayList<>();
 	    
 	    try
 	    {
-	        String query = "SELECT c2.id_product FROM categories c1 JOIN categories c2 ON c2.id = c1.id WHERE c1.id_product = ? AND c2.id_product != ?";
+	    	String query = "SELECT TOP 6 c2.id_product FROM categories c1 JOIN categories c2 ON c2.id = c1.id WHERE c1.id_product = ? AND c2.id_product != ? ORDER BY NEWID()";
 	        PreparedStatement preparedStatement = conn.prepareStatement(query);
 	        preparedStatement.setInt(1, id);
 	        preparedStatement.setInt(2, id);
@@ -182,8 +184,8 @@ public class interact_with_product {
 	        }
 
 		    for(Integer relatedID : relatedProducts ) {
-	        	detail = get_detail_product(relatedID);
-	        	relatedList.addAll(detail);
+	        	product = getProductByID(relatedID);
+	        	relatedList.add(product);
 	        }
 	    }
 	    catch (SQLException e) { 
@@ -247,5 +249,69 @@ public class interact_with_product {
 		}
 		return list;
 	}
+	// Quynh Anh 
+	//TRẢ VỀ THÔNG TIN CỦA ĐỐI TƯỢNG PRODUCT
+		public static Product getProductByID(Integer id) {
+			try
+		    {
+		        String query = "SELECT * FROM product WHERE id = ? ";
+		        PreparedStatement preparedStatement = conn.prepareStatement(query);
+		        preparedStatement.setInt(1, id);
+		        
+		        ResultSet resultSet = preparedStatement.executeQuery();
+		        
+		        while(resultSet.next())
+		        {
+		        	return new Product(resultSet.getInt(1),  // id
+							        	resultSet.getString(2), // name
+							        	resultSet.getInt(3), //price
+							        	resultSet.getDate(4), //date
+							        	resultSet.getFloat(5), // discount
+							        	resultSet.getString(7),// info
+							        	resultSet.getString(8)); // material
+		        }
+		    }
+		    catch(Exception e){
+				System.out.println(e);
+			}
+			return null;
+		}
+		
+		//LẤY DANH SÁCH SIZE CỦA MỘT SẢN PHẨM
+		public static ArrayList<String> get_size(int id){
+		    ArrayList<String> sizeProducts = new ArrayList<String>();
+		    
+		    try
+		    {
+		    	String query = "SELECT size1, size2, size3, size4, unit FROM size s JOIN categories c ON c.id = s.id JOIN product p ON p.id = c.id_product WHERE p.id = ?";
+		        PreparedStatement preparedStatement = conn.prepareStatement(query);
+		        preparedStatement.setInt(1, id);
+		        
+		        ResultSet resultSet = preparedStatement.executeQuery();
+		        while(resultSet.next()) {
+		        	Float size1 = resultSet.getFloat("size1");
+		        	String sizeString1 = String.valueOf(size1);
+		        	Float size2 = resultSet.getFloat("size2");
+		        	String sizeString2 = String.valueOf(size2);
+		        	Float size3 = resultSet.getFloat("size3");
+		        	String sizeString3 = String.valueOf(size3);
+		        	Float size4 = resultSet.getFloat("size4");
+		        	String sizeString4 = String.valueOf(size4);
+		        	String unit = resultSet.getString("unit");
+		        	sizeProducts.add(sizeString1);
+		        	sizeProducts.add(sizeString2);
+		        	sizeProducts.add(sizeString3);
+		        	sizeProducts.add(sizeString4);
+		        	sizeProducts.add(unit);
+		        }
+		    }
+		    catch (SQLException e) { 
+	           System.out.println(e);
+	       }
+		    catch(Exception e){
+				System.out.println(e);
+			}
+			return sizeProducts;
+		}
 	
 }

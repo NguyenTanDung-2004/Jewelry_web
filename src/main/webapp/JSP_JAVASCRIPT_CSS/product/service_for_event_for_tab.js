@@ -37,16 +37,25 @@ function checkDiscount(allDataProduct, index) {
     return discount != 0;
 }
 
+// Function to make URL
+function toFriendlyUrl(name) {
+        return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "");
+    }
+
 // Function to generate HTML content
 function generateProductHTML(product, index) {
+	var name = toFriendlyUrl(product[1]);
+	var friendlyUrl = `${name}-${product[0]}.html`;
     var productHTML = `
         <div class="sanpham">
-            <img src="/Jewelry_web/img_product/${product[0]}_1.png" style="height: 200px;" alt="">
-            <div class="content1">
-                <p class="name1">${product[1]}</p>
-                <p class="money">${formatMoneyVND(product[2])} VND</p>
-            </div>
-            ${checkDiscount(all_data_product, index) ? `<div class="sale">-${Math.floor(product[4] * 100)}%</div>` : ''}
+            <a href="/Jewelry_web/product/${friendlyUrl}" class="links">
+                <img src="/Jewelry_web/img_product/${product[0]}_1.png" style="height: 200px;" alt="">
+                <div class="content1">
+                    <p class="name1">${product[1]}</p>
+                    <p class="money">${formatMoneyVND(product[2])} VND</p>
+                </div>
+                ${checkDiscount(all_data_product, index) ? `<div class="sale">-${Math.floor(product[4] * 100)}%</div>` : ''}
+            </a>
         </div>
     `;
     return productHTML;
@@ -74,6 +83,7 @@ function render_products_for_1_tab(name_tab){
 	number_products.innerHTML = list.length + " products";
 	var title_search = document.querySelector("body main .title_search .name");
 	title_search.innerHTML = name_tab.toUpperCase();
+	sessionStorage.setItem("breadcrumbs", name_tab.toUpperCase());
 	current_id_list = list;
 	load_more.style.display = "none";
 }
@@ -131,6 +141,7 @@ function render_products_for_sales_tab(){
 	number_products.innerHTML = create_saled_list().length + " products";
 	var title_search = document.querySelector("body main .title_search .name");
 	title_search.innerHTML = "SALES";
+	sessionStorage.setItem("breadcrumbs", "SALES");
 	current_id_list = create_id_saled_list();
 	load_more.style.display = "none";
 }
