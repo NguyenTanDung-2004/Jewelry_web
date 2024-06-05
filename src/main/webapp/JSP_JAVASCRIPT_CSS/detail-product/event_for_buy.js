@@ -57,7 +57,7 @@ function buyNow(productId, size, quantity) {
         // Sử dụng dữ liệu từ mảngd
        	if (resp == "buy_now_successfully"){
 			alert("Product will be bought");
-			//window.location = "http://localhost:8080/Jewelry_web/cart";
+			window.location = "http://localhost:8080/Jewelry_web/cart";
 		   }
 		else{
 			alert("Product will not be bought");

@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="java.util.ArrayList" %>
@@ -36,9 +37,12 @@
         if (session.getAttribute("cartList") != null) {
             cartList = (ArrayList<ArrayList<String>>) session.getAttribute("cartList");
         }
+
+        DecimalFormat formatter = new DecimalFormat("#,###");
         String action = "";
-        if (request.getParameter("action") != null) {
-            action = request.getParameter("action");
+        if (session.getAttribute("action") != null) {
+            action = String.valueOf(session.getAttribute("action"));
+//            System.out.println(action);
         }
 
         int is_used_coupon = Integer.parseInt(String.valueOf(request.getAttribute("is_used_coupon")));
@@ -162,7 +166,7 @@
                                     <p><%=product_details.get(i).get(2)%> </p>
                                     <div class="product_size">Ring size : <%=product_details.get(i).get(3)%></div>
                                     <div class="product_price_and_update">
-                                        <div id=<%="price_" + id%> class="product_price"><%=product_details.get(i).get(5)%> VND</div>
+                                        <div id=<%="price_" + id%> class="product_price"><%=formatter.format(Double.parseDouble(product_details.get(i).get(5)))%> VND</div>
                                         <div class="product_update">
                                             <button type="button" id="minus_btn" onclick=decrease(this) class="product_quantity">−</button>
                                             <div id=<%="quantity_" + id%> class="product_quantity"><%=product_details.get(i).get(4)%></div>
@@ -180,8 +184,9 @@
                             for (int i = 0; i < product_details.size(); i++) {
                                 String imageUrl = request.getContextPath() + "/img_product/" + product_details.get(i).get(0) + "_1.png";
                                 String id = "index_" + String.valueOf(i);
-                                if (product_details.get(i).get(0) == cartList.get(0).get(1)) {%> 
-
+                                for (int m = 0; m < cartList.size(); m++) {
+                                    if (product_details.get(i).get(0).equals(cartList.get(m).get(1))) {%> 
+                                    
                         <div id=<%=id%> class="product_detail">
                             <div class="product_name">
                                 <input type="checkbox" class="product_check_box" onclick="add_to_cart(this)" checked>
@@ -195,7 +200,7 @@
                                     <p><%=product_details.get(i).get(2)%> </p>
                                     <div class="product_size">Ring size : <%=product_details.get(i).get(3)%></div>
                                     <div class="product_price_and_update">
-                                        <div id=<%="price_" + id%> class="product_price"><%=product_details.get(i).get(5)%> VND</div>
+                                        <div id=<%="price_" + id%> class="product_price"><%=formatter.format(Double.parseDouble(product_details.get(i).get(5)))%> VND</div>
                                         <div class="product_update">
                                             <button type="button" id="minus_btn" onclick=decrease(this) class="product_quantity">−</button>
                                             <div id=<%="quantity_" + id%> class="product_quantity"><%=product_details.get(i).get(4)%></div>
@@ -208,10 +213,10 @@
 
                             <div class="line"></div>
                         </div> 
-                        <% } else{ %>        
-                            <div id=<%=id%> class="product_detail">
+                        <% } else {%>        
+                        <div id=<%=id%> class="product_detail">
                             <div class="product_name">
-                                <input type="checkbox" class="product_check_box" onclick="add_to_cart(this)" checked>
+                                <input type="checkbox" class="product_check_box" onclick="add_to_cart(this)">
                                 <h3 id=<%="name_" + id%> class="product_name_2"><%=product_details.get(i).get(7)%></h3>
                                 <h3 class="product_type"><%=product_details.get(i).get(1)%></h3>
                             </div>
@@ -222,7 +227,7 @@
                                     <p><%=product_details.get(i).get(2)%> </p>
                                     <div class="product_size">Ring size : <%=product_details.get(i).get(3)%></div>
                                     <div class="product_price_and_update">
-                                        <div id=<%="price_" + id%> class="product_price"><%=product_details.get(i).get(5)%> VND</div>
+                                        <div id=<%="price_" + id%> class="product_price"><%=formatter.format(Double.parseDouble(product_details.get(i).get(5)))%> VND</div>
                                         <div class="product_update">
                                             <button type="button" id="minus_btn" onclick=decrease(this) class="product_quantity">−</button>
                                             <div id=<%="quantity_" + id%> class="product_quantity"><%=product_details.get(i).get(4)%></div>
@@ -235,7 +240,9 @@
 
                             <div class="line"></div>
                         </div> 
-                        <% } %> 
+                        <% } %>
+                        <% }
+                            session.removeAttribute("action"); %> 
                         <% } %>             
                         <% }%>
 
@@ -263,20 +270,20 @@
                     <div class="line"></div>
                     <div class="order_amount">
                         <h3>Amount</h3>
-                        <div class="order_amount_total_price">0</div>
+                        <div class="order_amount_total_price" onchange="disable(this)">0</div>
                     </div>
 
                     <%
                         if (coupon_info.size() == 0) {
                     %>
-<!--                    <div class="coupon_code">
-                        <h3>Coupon Code</h3>
-                        <div class="coupon_code_value">0</div>
-                    </div>
-                    <div class="order_discount">
-                        <h3>Discount Value </h3>
-                        <div class="order_discount_value">0</div>
-                    </div>-->
+                    <!--                    <div class="coupon_code">
+                                            <h3>Coupon Code</h3>
+                                            <div class="coupon_code_value">0</div>
+                                        </div>
+                                        <div class="order_discount">
+                                            <h3>Discount Value </h3>
+                                            <div class="order_discount_value">0</div>
+                                        </div>-->
                     <div class="shipping_fee">
                         <h3>Shipping</h3>
                         <div class="shipping_fee_value">0</div>
@@ -313,17 +320,17 @@
                             if (isTomorrowOneDayAfterCouponDate == true) {
 
                     %>
-<!--                    <div class="coupon_code">
-                        <h3>Coupon Code</h3>
-                        <div class="coupon_code_value"><%=coupon_info.get(1)%></div>
-                    </div>
-                    <div class="order_discount">
-                        <h3>Discount Value </h3>
-                        <div class="order_discount_value"><%=Float.parseFloat(coupon_info.get(3)) * 100%> %</div>
-                    </div>-->
+                    <!--                    <div class="coupon_code">
+                                            <h3>Coupon Code</h3>
+                                            <div class="coupon_code_value"><%=coupon_info.get(1)%></div>
+                                        </div>
+                                        <div class="order_discount">
+                                            <h3>Discount Value </h3>
+                                            <div class="order_discount_value"><%=Float.parseFloat(coupon_info.get(3)) * 100%> %</div>
+                                        </div>-->
                     <div class="shipping_fee">
                         <h3>Shipping</h3>
-                        <div class="shipping_fee_value">50000</div>
+                        <div class="shipping_fee_value">0</div>
                     </div>
                     <div class="line"></div>
                     <div class="order_total">
@@ -338,14 +345,14 @@
 
 
                     %>
-<!--                    <div class="coupon_code">
-                        <h3>Coupon Code</h3>
-                        <div class="coupon_code_value">Invalid. Try another</div>
-                    </div>
-                    <div class="order_discount">
-                        <h3>Discount Value </h3>
-                        <div class="order_discount_value">0</div>
-                    </div>-->
+                    <!--                    <div class="coupon_code">
+                                            <h3>Coupon Code</h3>
+                                            <div class="coupon_code_value">Invalid. Try another</div>
+                                        </div>
+                                        <div class="order_discount">
+                                            <h3>Discount Value </h3>
+                                            <div class="order_discount_value">0</div>
+                                        </div>-->
                     <div class="shipping_fee">
                         <h3>Shipping</h3>
                         <div class="shipping_fee_value">50000</div>
@@ -374,14 +381,14 @@
 
                     <div class="line"></div>
 
-<!--                    <div style="visibility: hidden;"class="coupon">
-                        <img id="coupon_image"src="./assests/voucher.png" alt="">
-                        <form id="coupon_form" method="post">
-                            <input style="padding-top: 10px" type="text" id="coupon_input" placeholder="Add coupon code here" name="inputField">
-                            <button type="submit"></button>
-                        </form>
-
-                    </div>-->
+                    <!--                    <div style="visibility: hidden;"class="coupon">
+                                            <img id="coupon_image"src="./assests/voucher.png" alt="">
+                                            <form id="coupon_form" method="post">
+                                                <input style="padding-top: 10px" type="text" id="coupon_input" placeholder="Add coupon code here" name="inputField">
+                                                <button type="submit"></button>
+                                            </form>
+                    
+                                        </div>-->
 
 
                     <button id="buy_btn" disabled>Buy</button>
@@ -398,8 +405,9 @@
             <div class="main_modal">
                 <div class="input_line">
                     <div class="phone_input input-container">
-                        <input id="phone_input_box" type="text">
+                        <input type="number" id="phone_input_box" required>
                         <label for="phone_input_box">Phone</label>
+                        <!--                        <span style="width:100%; height: 50px; display:none" id="errorMessage"></span>-->
                     </div>
                     <!-- 
                                     <div class="name_input input-container">
@@ -431,7 +439,7 @@
 
                 <div class="input_line">
                     <div class="address_input input-container">
-                        <input id="address_input_box" type="text">
+                        <input id="address_input_box" type="text" required>
                         <label for="address_input_box">Address</label>
                     </div>
                 </div>
@@ -461,7 +469,7 @@
         <div class="order_successfully">
             <div class="main_order_successfully">
                 <div class="order_successfully_logo">
-                    <img src="/JSP_JAVASCRIPT_CSS/img/success.png" alt="">
+                    <img src="<%= request.getContextPath()%>/JSP_JAVASCRIPT_CSS/img/success.png" alt="">
                 </div>
 
                 <p>THANK YOU FOR YOUR ORDER !<br>
@@ -473,5 +481,6 @@
 
     <script src="<%= request.getContextPath()%>/JSP_JAVASCRIPT_CSS/cart/main.js"></script>
     <script src="<%= request.getContextPath()%>/JSP_JAVASCRIPT_CSS/cart/get_provinces_data.js"></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>-->
 
 </html>

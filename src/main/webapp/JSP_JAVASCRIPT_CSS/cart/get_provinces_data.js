@@ -12494,9 +12494,11 @@ function populateProvinces() {
 //    defaultOption.text = " ";
 
     var selectProvince = $("#province_input_box");
-    
-    var firstOption = selectProvince.options[0];
 
+    var option = document.createElement("option");
+    option.value = " ";
+    option.text = " ";
+    selectProvince.appendChild(option);
 //        selectProvince.appendChild(defaultOption);
     provinces.forEach(function (province) {
         var option = document.createElement("option");
@@ -12504,11 +12506,10 @@ function populateProvinces() {
         option.text = province.name;
         selectProvince.appendChild(option);
     });
-    
-    firstOption.style.display = "none"
-    
-    
-    
+
+
+
+
     // Populate cities based on the initial province
 //    populateCities(selectProvince.value);
 }
@@ -12520,6 +12521,11 @@ function populateCities(provinceId) {
     var filteredCities = cities.filter(function (city) {
         return city.idProvince == provinceId;
     });
+
+    var option = document.createElement("option");
+    option.value = " ";
+    option.text = " ";
+    selectCity.appendChild(option);
     filteredCities.forEach(function (city) {
         console.log(city)
         var option = document.createElement("option");
@@ -12538,6 +12544,11 @@ function populateDistricts(cityId) {
     var filteredDistricts = districts.filter(function (district) {
         return district.idDistrict == cityId;
     });
+
+    var option = document.createElement("option");
+    option.value = " ";
+    option.text = " ";
+    selectDistrict.appendChild(option);
     filteredDistricts.forEach(function (district) {
         var option = document.createElement("option");
         option.value = district.idCommune;

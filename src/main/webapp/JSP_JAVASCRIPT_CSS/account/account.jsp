@@ -55,7 +55,7 @@
             <%if(request.getSession().getAttribute("id_user") != null) {%>
             	<div class="right header_child">
                 <div class="user">
-                    <img src="<%=img%>" alt="">
+                   <img style="max-height: 30px; max-width: 30px; min-height: 30px; min-width: 30px; object-fit: cover;" src="<%=img%>" alt="">
                     <div class="user_hover">
                         <div class="arrow"></div>
                         <div class="content">
@@ -200,7 +200,9 @@
 								    <ul class="product-list">
 								    <% for(ArrayList<Object> product : product_list_of_order) { %>
 								        <li class="product-item">
-								            <a href="" class="product-link">
+								        <% String link = "http://localhost:8080/Jewelry_web/product/" +  product.get(1) + "-" + product.get(0) + ".html";
+								        	link = link.replaceAll("\\s", "-"); %>
+								            <a href="<%= link %>" class="product-link">
 								                <img src="<%="/Jewelry_web/img_product/" + product.get(0) + "_1.png" %>" alt="Product" class="product-img">
 								                <div class="product-info">
 								                    <span class="product-name"><%= product.get(1) %></span>
@@ -288,7 +290,9 @@
 								    <ul class="product-list">
 								    <% for(ArrayList<Object> product : product_list_of_order) { %>
 								        <li class="product-item">
-								            <a href="" class="product-link">
+								        <% String link = "http://localhost:8080/Jewelry_web/product/" +  product.get(1) + "-" + product.get(0) + ".html";
+								        	link = link.replaceAll("\\s", "-"); %>
+								            <a href="<%= link %>" class="product-link">
 								                <img src="<%="/Jewelry_web/img_product/" + product.get(0) + "_1.png" %>" alt="Product" class="product-img">
 								                <div class="product-info">
 								                    <span class="product-name"><%= product.get(1) %></span>
@@ -378,7 +382,9 @@
 								    <ul class="product-list">
 								    <% for(ArrayList<Object> product : product_list_of_order) { %>
 								        <li class="product-item">
-								            <a href="" class="product-link">
+								        <% String link = "http://localhost:8080/Jewelry_web/product/" +  product.get(1) + "-" + product.get(0) + ".html";
+								        	link = link.replaceAll("\\s", "-"); %>
+								            <a href="<%= link %>" class="product-link">
 								                <img src="<%="/Jewelry_web/img_product/" + product.get(0) + "_1.png" %>" alt="Product" class="product-img">
 								                <div class="product-info">
 								                    <span class="product-name"><%= product.get(1) %></span>
@@ -467,7 +473,9 @@
 								    <ul class="product-list">
 								    <% for(ArrayList<Object> product : product_list_of_order) { %>
 								        <li class="product-item">
-								            <a href="" class="product-link">
+								        <% String link = "http://localhost:8080/Jewelry_web/product/" +  product.get(1) + "-" + product.get(0) + ".html";
+								        	link = link.replaceAll("\\s", "-"); %>
+								            <a href="<%= link %>" class="product-link">
 								                <img src="<%="/Jewelry_web/img_product/" + product.get(0) + "_1.png" %>" alt="Product" class="product-img">
 								                <div class="product-info">
 								                    <span class="product-name"><%= product.get(1) %></span>
@@ -563,7 +571,9 @@
 								    <ul class="product-list">
 								    <% for(ArrayList<Object> product : product_list_of_order) { %>
 								        <li class="product-item">
-								            <a href="" class="product-link">
+								        <% String link = "http://localhost:8080/Jewelry_web/product/" +  product.get(1) + "-" + product.get(0) + ".html";
+								        	link = link.replaceAll("\\s", "-"); %>
+								            <a href="<%= link %>" class="product-link">
 								                <img src="<%="/Jewelry_web/img_product/" + product.get(0) + "_1.png" %>" alt="Product" class="product-img">
 								                <div class="product-info">
 								                    <span class="product-name"><%= product.get(1) %></span>
@@ -656,7 +666,9 @@
 								    <ul class="product-list">
 								    <% for(ArrayList<Object> product : product_list_of_order) { %>
 								        <li class="product-item">
-								            <a href="" class="product-link">
+								        <% String link = "http://localhost:8080/Jewelry_web/product/" +  product.get(1) + "-" + product.get(0) + ".html";
+								        	link = link.replaceAll("\\s", "-"); %>
+								            <a href="<%= link %>" class="product-link">
 								                <img src="<%="/Jewelry_web/img_product/" + product.get(0) + "_1.png" %>" alt="Product" class="product-img">
 								                <div class="product-info">
 								                    <span class="product-name"><%= product.get(1) %></span>
@@ -749,7 +761,9 @@
 								    <ul class="product-list">
 								    <% for(ArrayList<Object> product : product_list_of_order) { %>
 								        <li class="product-item">
-								            <a href="" class="product-link">
+								        <% String link = "http://localhost:8080/Jewelry_web/product/" +  product.get(1) + "-" + product.get(0) + ".html";
+								        	link = link.replaceAll("\\s", "-"); %>
+								            <a href="<%= link %>" class="product-link">
 								                <img src="<%="/Jewelry_web/img_product/" + product.get(0) + "_1.png" %>" alt="Product" class="product-img">
 								                <div class="product-info">
 								                    <span class="product-name"><%= product.get(1) %></span>
@@ -842,7 +856,9 @@
 								    <ul class="product-list">
 								    <% for(ArrayList<Object> product : product_list_of_order) { %>
 								        <li class="product-item">
-								            <a href="" class="product-link">
+								        <% String link = "http://localhost:8080/Jewelry_web/product/" +  product.get(1) + "-" + product.get(0) + ".html";
+								        	link = link.replaceAll("\\s", "-"); %>
+								            <a href="<%= link %>" class="product-link">
 								                <img src="<%="/Jewelry_web/img_product/" + product.get(0) + "_1.png" %>" alt="Product" class="product-img">
 								                <div class="product-info">
 								                    <span class="product-name"><%= product.get(1) %></span>
@@ -932,10 +948,6 @@
                                     <div class="item">
                                         <span class="label">Shipping</span>
                                         <span class="money js-shipping-money">50 000 VND</span>
-                                    </div>
-                                    <div class="item">
-                                        <span class="label">Total discount</span>
-                                        <span class="money js-discount-money">- 1 050 000 VND</span>
                                     </div>
                                     <div class="line-2"></div>
                                     <div class="item item-total">
@@ -1089,8 +1101,8 @@
                                             <i id="pass_eye" class="fa-solid fa-eye-slash"></i>
                                         </div>
                                         <div class="request">
-                                            <p>Must be at least 8 characters long. </p>
-                                            <p>Must include uppercase, lowercase letters,  numbers. </p>
+                                            <p>Must be at least 8 characters long. </p>
+                                            <p>Must include uppercase, lowercase letters,  numbers. </p>
                                         </div>
                                     </div>
                                     <div class="right">
@@ -1138,6 +1150,9 @@
         <div class="modal js-modal-send">
             <div class="overlay"></div>
             <div class="body">
+                <div class="btn-close-changepass">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
                 <img src="/Jewelry_web/JSP_JAVASCRIPT_CSS/img/account/lock.png" alt="Security img">
                 <div class="text">
                     <p>For your security, please verify your email address before making any changes.</p>
@@ -1151,6 +1166,9 @@
         <div class="modal js-modal-sent">
             <div class="overlay"></div>
             <div class="body">
+                <div class="btn-close-changepass">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
                 <img src="/Jewelry_web/JSP_JAVASCRIPT_CSS/img/account/sent-mail.png" alt="Send-Mail img">
                 <div class="text">
                     <p>We have sent a verification code to your email.</p>
@@ -1159,7 +1177,7 @@
                     <input type="text" id="verificationCode" name="verificationCode" maxlength="6" placeholder="Enter verification code">
                     <button class="btn btn-modal btn-confirm">CONFIRM</button>
                 </div>
-                <butotn class="btn-resend">Resend</butotn>
+                <button class="btn-resend">Resend</button>
             </div>
         </div>
         <div class="modal js-modal-reason-canceled">

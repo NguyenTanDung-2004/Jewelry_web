@@ -22,6 +22,7 @@ const filterDropDownMenu = $(".user_hover")
 const dropdownNavBarItem = $$(".dropdown_nav_bar_item ")
 const displayProduct = $$(".product_detail")
 const dropDownMenu = $(".drop_down_menu ")
+const shippingValue = $(".shipping_fee_value")
 const laptopScreen = 1120;
 
 const product_name = $$(".product_name_2")
@@ -31,6 +32,7 @@ const order_total = $(".order_total_price")
 const product_quantity_all = $$(".order_product_quantity")
 const coupon_discount_value = $(".order_discount_value")
 const shipping_value = $(".shipping_fee_value")
+const address_input = $("#address_input_box")
 
 
 var phone = ''
@@ -50,47 +52,78 @@ var cartProductQuantity = '';
 var cartProductTotalPrice = 0;
 var hasDeliveryInfo = false;
 
+function disable(ele) {
+    debugger;
+    if (ele.innerHTML == "0") {
+        send_button.disabled = true;
+    }
+}
 
+const numberInput = document.getElementById("phone_input_box");
+
+
+numberInput.addEventListener("keydown", function(event) {
+  // Allow only numbers, backspace, and delete keys
+  if (/[0-9\b\Delete]/.test(event.key) === false) {
+    event.preventDefault();
+  }
+
+  // Enforce starting with 0 on keydown
+  if (numberInput.value.length === 0 && event.key !== "0") {
+
+    event.preventDefault();
+    alert("Phone number must start with 0");
+  }
+});
+
+numberInput.addEventListener("input", function() {
+  // Enforce starting with 0 on input change (pasting, etc.)
+  if (numberInput.value.length > 0 && numberInput.value[0] !== "0") {
+    numberInput.value = "0" + numberInput.value.slice(1);
+  }
+  errorMessage.textContent = ""; // Clear error message on valid input
+});
 
 //new: handle buy now action from Quynh An code
 function buyNow() {
+    shipping_value.innerHTML = numberWithCommas(50000)
     for (let checkBox of productCheckBox) {
         if (checkBox.checked == true) {
+
             const temp_id = checkBox.parentElement.parentElement.id;
-            const temp_summaryId = "summary_" + id
-            const temp_cartProductName = $("#" + id.toString() + " #name_" + id.toString()).innerHTML
-            const temp_cartProductPrice = $("#" + id.toString() + " #price_" + id.toString()).innerHTML
-            const temp_cartProductQuantity = $("#" + id.toString() + " #quantity_" + id.toString()).innerHTML
-            const temp_cartProductTotalPrice = parseInt(cartProductPrice.replace("VND", "")) * parseInt(cartProductQuantity.replace("x", ""))
+            const temp_summaryId = "summary_" + temp_id
+            const temp_cartProductName = $("#" + temp_id.toString() + " #name_" + temp_id.toString()).innerHTML
+            const temp_cartProductPrice = $("#" + temp_id.toString() + " #price_" + temp_id.toString()).innerHTML
+            const temp_cartProductQuantity = $("#" + temp_id.toString() + " #quantity_" + temp_id.toString()).innerHTML
+            const temp_cartProductTotalPrice = parseInt(temp_cartProductPrice.replace("VND", "").replace(/,/g, "")) * parseInt(temp_cartProductQuantity)
             const htmlContent = `<div class="order_info">
 
-                        <div id="` + summaryId + `" class="order_product_info" >
-                            <div class="order_product_quantity"> x` + cartProductQuantity + `</div>
-                            <div class="order_product_name">` + cartProductName + `</div>
-                            <div class="order_product_price">` + cartProductPrice + `</div>
+                        <div id="` + temp_summaryId + `" class="order_product_info" >
+                            <div class="order_product_quantity"> x` + temp_cartProductQuantity + `</div>
+                            <div class="order_product_name">` + temp_cartProductName + `</div>
+                            <div class="order_product_price">` + temp_cartProductPrice + `</div>
                         </div>
                     </div>`;
 
             orderInfo.innerHTML += htmlContent;
-            amountWithoutCoupon += cartProductTotalPrice;
-            order_amount.innerHTML = amountWithoutCoupon;
-            if ($(".order_discount_value").innerHTML == 0) {
-                order_total.innerHTML = amountWithoutCoupon + 50000
-                console.log(amountWithCoupon);
-            } else {
-                var discountValue = parseFloat($(".order_discount_value").innerHTML.replace("%", ""))
-                amountWithCoupon = amountWithoutCoupon - amountWithoutCoupon * discountValue * 0.01;
-                order_total.innerHTML = amountWithCoupon + 50000
+            amountWithoutCoupon += temp_cartProductTotalPrice;
+            order_amount.innerHTML = numberWithCommas(amountWithoutCoupon)
+            order_total.innerHTML = numberWithCommas(amountWithoutCoupon + 50000)
 
-            }
-
-            selectedProduct.push([cartProductName, cartProductPrice, cartProductQuantity])
+            selectedProduct.push([temp_cartProductName, temp_cartProductPrice, temp_cartProductQuantity])
             console.log(selectedProduct)
         }
     }
 }
 
 buyNow()
+
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
 
 
 //
@@ -109,15 +142,15 @@ deliveryInfoButton.addEventListener("click", (event) => {
 // + and - quantity button
 function decrease(ele) {
 
-    const decreaseAmount = parseInt($("#price_" + ele.nextElementSibling.id.replace("quantity_", "")).innerHTML.replace("VND", ""))
+    const decreaseAmount = parseInt($("#price_" + ele.nextElementSibling.id.replace("quantity_", "")).innerHTML.replace("VND", "").replace(/,/g, ""))
     const checkBox = $("#check_box_" + ele.nextElementSibling.id.replace("quantity_", ""))
     if (checkBox.checked == true) {
-        if (parseInt(ele.nextElementSibling.innerHTML) > 0) {
+        if (parseInt(ele.nextElementSibling.innerHTML) > 1) {
             amountWithoutCoupon -= decreaseAmount;
 
-            order_amount.innerHTML = amountWithoutCoupon
-            order_total.innerHTML = amountWithoutCoupon + 50000
-                const displayInfo = $("#summary_" + ele.nextElementSibling.id.replace("quantity_", "") + " .order_product_quantity")
+            order_amount.innerHTML = numberWithCommas(amountWithoutCoupon)
+            order_total.innerHTML = numberWithCommas(amountWithoutCoupon + 50000)
+            const displayInfo = $("#summary_" + ele.nextElementSibling.id.replace("quantity_", "") + " .order_product_quantity")
 
             ele.nextElementSibling.innerHTML = (parseInt(ele.nextElementSibling.innerHTML) - 1).toString()
             displayInfo.innerHTML = "x" + ele.nextElementSibling.innerHTML
@@ -125,17 +158,20 @@ function decrease(ele) {
 
 
     }
+
+    if (order_amount.innerHTML === "0") {
+        send_button.disabled = true;
+    }
 }
 
 function increase(ele) {
-    debugger;
-    const increaseAmount = parseInt($("#price_" + ele.previousElementSibling.id.replace("quantity_", "")).innerHTML.replace("VND", ""))
+    const increaseAmount = parseInt($("#price_" + ele.previousElementSibling.id.replace("quantity_", "")).innerHTML.replace("VND", "").replace(/,/g, ""))
     const checkBox = $("#check_box_" + ele.previousElementSibling.id.replace("quantity_", ""))
     if (checkBox.checked == true) {
         amountWithoutCoupon += increaseAmount;
 
-        order_amount.innerHTML = amountWithoutCoupon
-        order_total.innerHTML = amountWithoutCoupon + 50000
+        order_amount.innerHTML = numberWithCommas(amountWithoutCoupon)
+        order_total.innerHTML = numberWithCommas(amountWithoutCoupon + 50000)
 
         const displayInfo = $("#summary_" + ele.previousElementSibling.id.replace("quantity_", "") + " .order_product_quantity")
         ele.previousElementSibling.innerHTML = (parseInt(ele.previousElementSibling.innerHTML) + 1).toString()
@@ -166,6 +202,7 @@ allCart.addEventListener("click", () => {
 function checkAll(ele) {
 
     if (ele.checked == true) {
+        shipping_value.innerHTML = numberWithCommas(50000)
         for (var product of productCheckBox) {
             if (product.checked == false) {
                 id = product.parentElement.parentElement.id;
@@ -173,7 +210,7 @@ function checkAll(ele) {
                 cartProductName = $("#" + id.toString() + " #name_" + id.toString()).innerHTML
                 cartProductPrice = $("#" + id.toString() + " #price_" + id.toString()).innerHTML
                 cartProductQuantity = $("#" + id.toString() + " #quantity_" + id.toString()).innerHTML
-                cartProductTotalPrice = parseInt(cartProductPrice.replace("VND", "")) * parseInt(cartProductQuantity.replace("x", ""))
+                cartProductTotalPrice = parseInt(cartProductPrice.replace("VND", "").replace(/,/g, "")) * parseInt(cartProductQuantity.replace("x", ""))
 
                 const htmlContent = `<div class="order_info">
 
@@ -185,8 +222,8 @@ function checkAll(ele) {
                     </div>`;
                 orderInfo.innerHTML += htmlContent;
                 amountWithoutCoupon += cartProductTotalPrice;
-                order_amount.innerHTML = amountWithoutCoupon;
-                order_total.innerHTML = amountWithoutCoupon + 50000
+                order_amount.innerHTML = numberWithCommas(amountWithoutCoupon)
+                order_total.innerHTML = numberWithCommas(amountWithoutCoupon + 50000)
                 console.log(amountWithCoupon);
                 selectedProduct.push([cartProductName, cartProductPrice, cartProductQuantity])
                 console.log(selectedProduct)
@@ -199,14 +236,15 @@ function checkAll(ele) {
         }
     }
     if (ele.checked == false) {
+        shipping_value.innerHTML = "0"
         for (var product of productCheckBox) {
             id = product.parentElement.parentElement.id;
             summaryId = "summary_" + id;
             const removedDiv = $("#" + summaryId);
             removedDiv.remove();
             amountWithoutCoupon = 0;
-            order_amount.innerHTML = amountWithoutCoupon;
-            order_total.innerHTML = amountWithoutCoupon;
+            order_amount.innerHTML = 0;
+            order_total.innerHTML = 0;
             shipping_value.innerHTML = "0"
             product.checked = false;
         }
@@ -217,15 +255,16 @@ function checkAll(ele) {
 
 //chose product from cart to buy
 function add_to_cart(ele) {
-    shipping_value.innerHTML = "50000"
+
+    shipping_value.innerHTML = numberWithCommas(50000)
     id = ele.parentElement.parentElement.id;
     summaryId = "summary_" + id
     cartProductName = $("#" + id.toString() + " #name_" + id.toString()).innerHTML
     cartProductPrice = $("#" + id.toString() + " #price_" + id.toString()).innerHTML
     cartProductQuantity = $("#" + id.toString() + " #quantity_" + id.toString()).innerHTML
-    cartProductTotalPrice = parseInt(cartProductPrice.replace("VND", "")) * parseInt(cartProductQuantity.replace("x", ""))
+    cartProductTotalPrice = parseInt(cartProductPrice.replace("VND", "").replace(/,/g, "")) * parseInt(cartProductQuantity.replace("x", ""))
+    console.log(cartProductTotalPrice)
     if (ele.checked) {
-        debugger;
 
         const htmlContent = `<div class="order_info">
 
@@ -238,21 +277,25 @@ function add_to_cart(ele) {
 
         orderInfo.innerHTML += htmlContent;
         amountWithoutCoupon += cartProductTotalPrice;
-        order_amount.innerHTML = amountWithoutCoupon;
-        order_total.innerHTML = amountWithoutCoupon + 50000
-        console.log(amountWithCoupon);
+        order_amount.innerHTML = numberWithCommas(amountWithoutCoupon)
+        order_total.innerHTML = numberWithCommas(amountWithoutCoupon + 50000)
+        console.log(amountWithoutCoupon);
         selectedProduct.push([cartProductName, cartProductPrice, cartProductQuantity])
         console.log(selectedProduct)
-
+        if (order_amount.innerHTML !== "0"  && hasDeliveryInfo) {
+            send_button.disabled = false;
+        } 
 
     } else {
+        debugger;
+
         checkAllBtn.checked = false;
 
         const removedDiv = $("#" + summaryId);
         removedDiv.remove();
         amountWithoutCoupon -= cartProductTotalPrice;
-        order_amount.innerHTML = amountWithoutCoupon;
-        order_total.innerHTML = amountWithoutCoupon + 50000
+        order_amount.innerHTML = numberWithCommas(amountWithoutCoupon)
+        order_total.innerHTML = numberWithCommas(amountWithoutCoupon + 50000)
         console.log(amountWithCoupon);
 
         for (let product of selectedProduct) {
@@ -263,6 +306,12 @@ function add_to_cart(ele) {
             }
         }
 
+
+        if (order_amount.innerHTML === "0") {
+            send_button.disabled = true;
+            shipping_value.innerHTML = 0;
+            order_total.innerHTML = "0"
+        } 
         console.log(selectedProduct)
     }
 
@@ -279,26 +328,26 @@ function add_to_cart(ele) {
 //});
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    window.addEventListener('scroll', stickToTop);
-
-    var sticky = orderSummary.offsetTop;
-
-    function stickToTop() {
-        if (window.innerWidth > laptopScreen) {
-            if (window.scrollY >= sticky) {
-                console.log("window.pageYOffset >= sticky");
-            } else {
-                console.log("Not window.pageYOffset >= sticky");
-            }
-            if (window.scrollY >= sticky) {
-                orderSummary.classList.add("sticky");
-            } else {
-                orderSummary.classList.remove("sticky");
-            }
-        }
-    }
-})
+//document.addEventListener('DOMContentLoaded', function () {
+//    window.addEventListener('scroll', stickToTop);
+//
+//    var sticky = orderSummary.offsetTop;
+//
+//    function stickToTop() {
+//        if (window.innerWidth > laptopScreen) {
+//            if (window.scrollY >= sticky) {
+//                console.log("window.pageYOffset >= sticky");
+//            } else {
+//                console.log("Not window.pageYOffset >= sticky");
+//            }
+//            if (window.scrollY >= sticky) {
+//                orderSummary.classList.add("sticky");
+//            } else {
+//                orderSummary.classList.remove("sticky");
+//            }
+//        }
+//    }
+//})
 
 filter.addEventListener("click", () => {
     filterDropDownMenu.style.scale = "1";
@@ -373,6 +422,7 @@ const send_button = document.getElementById("buy_btn");
 //}
 
 function post(path, params) {
+        debugger;
     return fetch(path, {
         method: 'POST',
         headers: {
@@ -400,6 +450,11 @@ function post(path, params) {
 
 save_btn.addEventListener('click', () => {
     debugger;
+    if(address_input.value == "" || numberInput.value =="") {
+        alert("missing required fields");
+        return;
+    }
+    hasDeliveryInfo = true;
     modal.style.visibility = "hidden"
     $(".no_delivery_info").style.display = "none"
     $(".has_delivery_info").style.display = "block"
@@ -410,7 +465,10 @@ save_btn.addEventListener('click', () => {
     province = $("#province_input_box").options[$("#province_input_box").selectedIndex].textContent
     city = $("#city_input_box").options[$("#city_input_box").selectedIndex].textContent
     district = $("#district_input_box").options[$("#district_input_box").selectedIndex].textContent
-    send_button.disabled = false;
+    if (order_total.innerHTML != "0") {
+        send_button.disabled = false;
+    }
+
     console.log(phone)
     console.log(adrress)
 });
@@ -419,7 +477,7 @@ save_btn.addEventListener('click', () => {
 
 //
 //send_button.addEventListener('click', () => {
-//    post('http://localhost:8080/Jewelry/cart',
+//    post('http://localhost:8080/Jewelry_web/cart',
 //            {
 //                'action': 'buy',
 //                'product_detail': selectedProduct,
@@ -434,16 +492,16 @@ save_btn.addEventListener('click', () => {
 //}); 
 
 send_button.addEventListener('click', () => {
+
     post('http://localhost:8080/Jewelry_web/cart', {
         'action': 'buy',
         'product_detail': selectedProduct,
-        'total_money': amountWithCoupon,
+        'total_money': amountWithoutCoupon,
         'phone': phone,
         'adrress': adrress,
         'province': province,
         'city': city,
         'district': district,
-        'coupon_value': parseFloat(coupon_discount_value.innerHTML),
         'shipping_fee': parseFloat(shipping_value.innerHTML)
     });
 }

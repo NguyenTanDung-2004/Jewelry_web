@@ -1,3 +1,13 @@
+const closeModalBtns = document.querySelectorAll(".btn-close-changepass");
+closeModalBtns.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    location.reload();
+    hideModalSend();
+	showModalSent();
+  });
+});
+
 var send_to_email =  document.querySelector("body .modal .body .info p");
 var sendMailBtn = document.querySelector(".js-send-mail");
 var resendBtn = document.querySelector("body .modal .body .btn-resend");

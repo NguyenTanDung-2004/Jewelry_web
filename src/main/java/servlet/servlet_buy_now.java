@@ -48,7 +48,8 @@ public class servlet_buy_now extends HttpServlet{
 		        cartList = new ArrayList<>();
 		    }
 		    cartList.add(detail_cart);		    
-	        session.setAttribute("cartList", cartList);
+	        session.setAttribute("action", "buy_now");
+		    session.setAttribute("cartList", cartList);
 		    send_response("buy_now_successfully", resp);
 		    //System.out.println("Cart List: " + cartList);
 		}

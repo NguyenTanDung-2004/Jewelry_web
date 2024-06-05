@@ -255,6 +255,10 @@ input[type="checkbox"] {
 
 .product_description {
     position: relative;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .product_description > p {
@@ -279,6 +283,7 @@ input[type="checkbox"] {
 .product_price_and_update {
     display: flex;
     justify-content: space-between;
+/*    position: absolute;*/
     width: 100%;
     flex: 0 0 100%;
     bottom: 0;
@@ -290,11 +295,14 @@ input[type="checkbox"] {
 }
 
 .order_summmary {
+    position: sticky;
+    top: 10px;
     background-color: white;
     width: 23%;
-    height: auto;
+    height: fit-content;
     margin-top: 20px;
     padding: 10px 30px 20px;
+    max-width: 300px;
 }
 
 .order_info {

@@ -95,7 +95,7 @@
             <%if(request.getSession().getAttribute("id_user") != null) {%>
             	<div class="right header_child">
                 <div class="user">
-                    <img src="<%=img%>" alt="">
+                    <img style="max-height: 30px; max-width: 30px; min-height: 30px; min-width: 30px; object-fit: cover;" src="<%=img%>" alt="">
                     <div class="user_hover">
                         <div class="arrow"></div>
                         <div class="content">

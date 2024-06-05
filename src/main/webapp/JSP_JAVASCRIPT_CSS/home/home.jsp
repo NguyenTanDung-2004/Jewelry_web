@@ -68,7 +68,7 @@
                 <div class="right text">
                    <div class="right_child">
                         <p class="text_child" id="p_login_header">Login</p>
-                        <i class="fa-solid fa-cart-shopping text_child"></i>
+                        <i id="cart_in_home" class="fa-solid fa-cart-shopping text_child"></i>
                    </div>
                 </div>
             </div>
@@ -433,6 +433,18 @@
         </div>
         <script type="text/javascript">
         	var tradition = <%=convert_1_way_ArrayList_to_Json(tradition)%>
+        	var cart_in_home = document.querySelector("#cart_in_home");
+        	var user_id = <%=(Integer)session.getAttribute("user_id")%>;
+        	cart_in_home.addEventListener("click", () => 
+        		{
+        			if (user_id != null){
+        				window.location = "http://localhost:8080/Jewelry_web/cart";
+        			}
+        			else{
+        				window.location = "http://localhost:8080/Jewelry_web/home?autoClick=true"; 				
+        			}	
+        		}
+        	)
         </script>
         <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/home/home_login_forgot_register.js"></script>
         <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/home/home_responsive.js"></script>

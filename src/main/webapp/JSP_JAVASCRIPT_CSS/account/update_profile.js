@@ -1,5 +1,18 @@
 var saveAccountBtn = document.getElementById("save-account");
 
+// ràng buộc số điện thoại
+document.querySelector(".js-grid-main .grid__row #phone").addEventListener("input", function() {
+
+  var formattedValue = this.value.replace(/\D/g, "");
+
+  formattedValue = formattedValue.slice(0, 11);
+
+  if (formattedValue.length > 0 && formattedValue[0] !== "0") {
+    formattedValue = "0" + formattedValue;
+  }
+  this.value = formattedValue;
+});
+
 var name1 = document.getElementById("name").value;
 var email = document.getElementById("email").value;
 var phone = document.getElementById("phone").value;
@@ -11,6 +24,7 @@ var image = document.querySelector('.avatar-img img').src;
 
 setInterval(checkFieldChanges, 10);
 
+
 function checkFieldChanges() {
   var currentName = document.getElementById("name").value;
   var currentEmail = document.getElementById("email").value;
@@ -20,7 +34,10 @@ function checkFieldChanges() {
   var currentMonth = document.querySelector('.month-select').value;
   var currentYear = document.querySelector('.year-select').value;
   var currentAvatarImg = document.querySelector('.avatar-img img').src;
-
+  if (currentDay == "" || currentMonth == "" || currentYear == "" || currentPhone.length < 10) {
+	saveAccountBtn.classList.remove("active");
+    return;
+  }
   if (
     currentName !== name1 ||
     currentEmail !== email ||

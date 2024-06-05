@@ -68,6 +68,8 @@ public class servlet_cart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+    	response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         int user_id = (int) session.getAttribute("id_user");
         String coupon_code = String.valueOf(session.getAttribute("coupon_code"));
@@ -95,6 +97,8 @@ public class servlet_cart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+    	response.setCharacterEncoding("UTF-8");
 
         // Set content type of the response
         response.setContentType("application/json");
@@ -127,7 +131,7 @@ public class servlet_cart extends HttpServlet {
             String province = jsonObject.get("province").getAsString();
             String city = jsonObject.get("city").getAsString();
             String district = jsonObject.get("district").getAsString();
-            Float coupon_ratio = jsonObject.get("coupon_value").getAsFloat();
+            Float coupon_ratio = (float) 0.5;
             Float shipping_fee = jsonObject.get("shipping_fee").getAsFloat();
             interact_with_orders.create_order(order_id, total_money, phone, adrress, province, district, city, coupon_ratio, shipping_fee);
             JsonArray order_detail = jsonObject.get("product_detail").getAsJsonArray();

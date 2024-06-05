@@ -648,13 +648,15 @@ body .modal .body {
     animation: growth linear 0.1s;
 }
 
-body .modal .body .btn-close {
+body .modal .body .btn-close,
+.btn-close-changepass {
     cursor: pointer;
     background-color: transparent;
     margin-left: auto;
     margin-top: -4px;
 }
-body .modal .body .btn-close i {
+body .modal .body .btn-close i,
+.btn-close-changepass {
     padding: 0 4px; 
     font-size: 32px;
     font-weight: 600;
