@@ -65,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <i class="fa-solid fa-cart-shopping text_child" style="color: gray"></i>
+                <i id="icon_cart" class="fa-solid fa-cart-shopping text_child" style="color: gray"></i>
             
             </div>
             <%} %>

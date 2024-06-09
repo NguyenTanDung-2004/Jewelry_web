@@ -860,67 +860,76 @@ body .collections .text{
 }
 /*footer*/
 body footer .footer{
-  background-color: #0e333c;
-  padding-bottom: 100px;
-  padding-top: 50px;
-  width: 100vw;
-  transform: translateX(-50px);
+    background-color: #0e333c;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    width: 100vw;
+    transform: translateX(-50px);
 }
 body footer .footer .main{
-  display: flex;
-  justify-content: space-between;
-  padding-left: 100px;
-  padding-right: 100px;
-  color: white;
-  font-family: "Aref Ruqaa Ink", serif;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 200px;
+    padding-right: 200px;
+    color: white;
+    font-family: "Aref Ruqaa Ink", serif;
 }
 body footer .footer .main .location .bottom3{
-  display: flex;
-  text-decoration: underline;
+    display: flex;
+    text-decoration: underline;
 }
 body footer .footer .main .main_child{
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 body footer .footer .main .main_child .bottom3{
-  position: relative;
-  color: #ABABAB;
+    position: relative;
+    color: #ABABAB;
 }
 body footer .footer .main .main_child .top3{
-  font-size: 20px;
+    font-size: 20px;
 }
 body footer .footer .main .main_child .bottom3 input{
-  height: 25px;
-  padding-left: 5px;
-  outline: none;
+    height: 25px;
+    padding-left: 5px;
+    outline: none;
 }
 body footer .footer .main .subcribe .bottom3 i{
-  padding: 5px 5px;
-  position: absolute;
-  background-color: #9d6939;
-  color: white;
-  right: 0px
+    padding: 5px 5px;
+    position: absolute;
+    background-color: #9d6939;
+    color: white;
+    right: 0px
 }
 body footer .footer .line_copyright{
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 body footer .footer .line_copyright .line{
-  width: 80vw;
-  height: 1px;
-  background-color: #ABABAB;
-  display: flex;
-  
+    width: 80vw;
+    height: 1px;
+    background-color: #ABABAB;
+    display: flex;
+    
 }
 body footer .footer .line_copyright p{
-  width: 80%;
-  transform: translateX(50px);
-  color: #ABABAB;
+    width: 80%;
+    transform: translateX(50px);
+    color: #ABABAB;
+}
+
+#checkbox {
+    accent-color: #DFBF92;
+    transform: translateY(1px);
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
 }
 /*collections*/
 body .collections{
@@ -3736,6 +3745,8 @@ body .collections .text{
     color: #ABABAB;
   }
 }
+
+
 
 
 /*asdfasdfasdfasdf*/

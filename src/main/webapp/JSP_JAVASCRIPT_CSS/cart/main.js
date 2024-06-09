@@ -1,6 +1,8 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
+const userAva = $(".user")
+const userDropDown = $(".user_ava_hover")
 const buyButton = $("#buy_btn")
 const deliveryInfoButton = $("#delivery_info_btn")
 const modal = $(".modal")
@@ -52,6 +54,38 @@ var cartProductQuantity = '';
 var cartProductTotalPrice = 0;
 var hasDeliveryInfo = false;
 
+
+
+//document.addEventListener("DOMContentLoaded", function() {
+//    // Check if the div already has a value (if it doesn't, set the default value))
+//    shipping_value.innerHTML = "0"
+//});
+
+shipping_value.innerHTML = "0"
+
+window.addEventListener('beforeunload', function (event) {
+
+    // Display the confirmation dialog
+    var confirmationMessage = 'Reloading will lead to data loss. Are you sure?';
+
+    // For most browsers
+    event.returnValue = confirmationMessage;
+    // For modern browsers
+    return confirmationMessage;
+});
+
+//// Handle the reload event
+window.addEventListener('unload', function (event) {
+
+    // If the page is reloading, the beforeunload event has been confirmed
+    // Otherwise, the user canceled the action, so prevent the page from reloading
+    if (!event.target.performance.navigation.type === PerformanceNavigation.TYPE_RELOAD) {
+        shipping_value.innerHTML = "0"
+        event.preventDefault();
+    }
+});
+
+
 function disable(ele) {
     debugger;
     if (ele.innerHTML == "0") {
@@ -62,34 +96,34 @@ function disable(ele) {
 const numberInput = document.getElementById("phone_input_box");
 
 
-numberInput.addEventListener("keydown", function(event) {
-  // Allow only numbers, backspace, and delete keys
-  if (/[0-9\b\Delete]/.test(event.key) === false) {
-    event.preventDefault();
-  }
+numberInput.addEventListener("keydown", function (event) {
+    // Allow only numbers, backspace, and delete keys
+    if (/[0-9\b\Delete]/.test(event.key) === false) {
+        event.preventDefault();
+    }
 
-  // Enforce starting with 0 on keydown
-  if (numberInput.value.length === 0 && event.key !== "0") {
+    // Enforce starting with 0 on keydown
+    if (numberInput.value.length === 0 && event.key !== "0") {
 
-    event.preventDefault();
-    alert("Phone number must start with 0");
-  }
+        event.preventDefault();
+        alert("Phone number must start with 0");
+    }
 });
 
-numberInput.addEventListener("input", function() {
-  // Enforce starting with 0 on input change (pasting, etc.)
-  if (numberInput.value.length > 0 && numberInput.value[0] !== "0") {
-    numberInput.value = "0" + numberInput.value.slice(1);
-  }
-  errorMessage.textContent = ""; // Clear error message on valid input
+numberInput.addEventListener("input", function () {
+    // Enforce starting with 0 on input change (pasting, etc.)
+    if (numberInput.value.length > 0 && numberInput.value[0] !== "0") {
+        numberInput.value = "0" + numberInput.value.slice(1);
+    }
+    errorMessage.textContent = ""; // Clear error message on valid input
 });
 
 //new: handle buy now action from Quynh An code
 function buyNow() {
-    shipping_value.innerHTML = numberWithCommas(50000)
+
     for (let checkBox of productCheckBox) {
         if (checkBox.checked == true) {
-
+            shipping_value.innerHTML = numberWithCommas(50000)
             const temp_id = checkBox.parentElement.parentElement.id;
             const temp_summaryId = "summary_" + temp_id
             const temp_cartProductName = $("#" + temp_id.toString() + " #name_" + temp_id.toString()).innerHTML
@@ -282,9 +316,9 @@ function add_to_cart(ele) {
         console.log(amountWithoutCoupon);
         selectedProduct.push([cartProductName, cartProductPrice, cartProductQuantity])
         console.log(selectedProduct)
-        if (order_amount.innerHTML !== "0"  && hasDeliveryInfo) {
+        if (order_amount.innerHTML !== "0" && hasDeliveryInfo) {
             send_button.disabled = false;
-        } 
+        }
 
     } else {
         debugger;
@@ -311,7 +345,7 @@ function add_to_cart(ele) {
             send_button.disabled = true;
             shipping_value.innerHTML = 0;
             order_total.innerHTML = "0"
-        } 
+        }
         console.log(selectedProduct)
     }
 
@@ -353,6 +387,10 @@ filter.addEventListener("click", () => {
     filterDropDownMenu.style.scale = "1";
 })
 
+userAva.addEventListener("click", () => {
+    userDropDown.style.scale = "1";
+})
+
 
 dropDownMenu.addEventListener("click", () => {
     for (var item of dropdownNavBarItem) {
@@ -381,6 +419,10 @@ window.onclick = function (event) {
 
     if (!event.target.matches('.user_hover') && !event.target.matches('#filter')) {
         filterDropDownMenu.style.scale = "0";
+    }
+
+    if (!event.target.matches('.user_ava_hover') && !event.target.matches('.user')) {
+        userDropDown.style.scale = "0";
     }
 
 
@@ -421,36 +463,10 @@ const send_button = document.getElementById("buy_btn");
 //    hidden_form.submit();
 //}
 
-function post(path, params) {
-        debugger;
-    return fetch(path, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' // Adjust content type as needed
-        },
-        body: JSON.stringify(params)
-    })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text(); // or response.json() if expecting JSON
-            })
-            .then(data => {
-                // Handle the response as needed
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-}
-
-
-
 
 save_btn.addEventListener('click', () => {
     debugger;
-    if(address_input.value == "" || numberInput.value =="") {
+    if (address_input.value == "" || numberInput.value == "") {
         alert("missing required fields");
         return;
     }
@@ -496,13 +512,80 @@ send_button.addEventListener('click', () => {
     post('http://localhost:8080/Jewelry_web/cart', {
         'action': 'buy',
         'product_detail': selectedProduct,
-        'total_money': amountWithoutCoupon,
+        'total_money': amountWithoutCoupon + parseFloat(shipping_value.innerHTML.replace(",","")),
         'phone': phone,
         'adrress': adrress,
         'province': province,
         'city': city,
         'district': district,
-        'shipping_fee': parseFloat(shipping_value.innerHTML)
+        'shipping_fee': parseFloat(shipping_value.innerHTML.replace(",",""))
     });
 }
 );
+// Function to handle the delete action
+function post(path, params) {
+    debugger;
+    return fetch(path, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Adjust content type as needed
+        },
+        body: JSON.stringify(params)
+    })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.includes("application/json")) {
+                    return response.json(); // Use response.json() if expecting JSON
+                } else {
+                    throw new TypeError("Expected JSON response from server");
+                }
+            })
+            .then(data => {
+                // Handle the response as needed
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+}
+
+let btn_delete = document.querySelectorAll(".fa-solid.fa-trash-can");
+for (var btn of btn_delete) {
+    btn.addEventListener("click", (event) => {
+        function delete_ele(ele) {
+            debugger;
+            var confirmation = window.confirm("Do you really want to delete this product from the cart?");
+            if (confirmation) {
+                id = ele.id.replace("delete_", "");
+                if (!isValidId(id)) {
+                    console.error("Invalid id:", id);
+                    return;
+                }
+                let productName = document.querySelector(".product_name_2").textContent;
+                let sizeString = document.querySelector(".product_size").textContent;
+                let size = parseFloat(sizeString.match(/\d+(\.\d+)?/)[0]);
+                let displayProduct = event.target.closest(".product_detail");
+                displayProduct.remove();
+
+
+                post('http://localhost:8080/Jewelry_web/cart', {
+                    'action': 'delete',
+                    'id': id,
+                    'name': productName,
+                    'size': size
+                });
+            }
+        }
+        delete_ele(event.target);
+        let amount = document.querySelector(".cart_amount");
+        amount.innerHTML = (parseInt(amount.innerHTML) - 1).toString();
+    });
+}
+
+function isValidId(id) {
+    // Đảm bảo id chỉ chứa các ký tự số
+    return /^\d+$/.test(id);
+}

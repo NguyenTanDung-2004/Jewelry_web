@@ -21,6 +21,10 @@
     	ArrayList<String> tradition = (ArrayList<String>)request.getAttribute("tradition");
     	String[] words_tradtional = tradition.get(2).split(" ");
     	ArrayList<Float> list_price = (ArrayList<Float>)request.getAttribute("list_price"); 
+    	int user_id = 0;
+    	if (session.getAttribute("id_user") == null){
+    		user_id = 1;
+    	}
     %>
     <%!
 	    public String convert_1_way_ArrayList_to_Json(ArrayList<String> list){
@@ -187,7 +191,7 @@
                 <p class="bottom">Anyone can get dressed up and glamorous, but it is how people dress in their days off.</p>
             </div>
             <div class="img">
-                <div class="img1 img_child">
+                <div class="img1 img_child" id="img_ring">
                     <img src="<%= "/Jewelry_web/img_product/" + new_arrivals.get(0) + "_1.png" %>"  alt="">
                     <div class="detail">
                         <div class="left">
@@ -197,7 +201,7 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
                 </div>
-                <div class="img2 img_child">
+                <div class="img2 img_child" id="img_bracelet">
                     <img src="<%= "/Jewelry_web/img_product/" + new_arrivals.get(1) + "_1.png" %>"  alt="">
                     <div class="detail">
                         <div class="left">
@@ -207,7 +211,7 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
                 </div>
-                <div class="img3 img_child">
+                <div class="img3 img_child" id="img_necklace">
                    <img src="<%= "/Jewelry_web/img_product/" + new_arrivals.get(2) + "_1.png" %>"  alt="">
                     <div class="detail">
                         <div class="left">
@@ -217,7 +221,7 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
                 </div>
-                <div class="img4 img_child">
+                <div class="img4 img_child" id="img_earring">
                    <img src="<%= "/Jewelry_web/img_product/" + new_arrivals.get(3) + "_1.png" %>"  alt="">
                     <div class="detail">
                         <div class="left">
@@ -360,7 +364,7 @@
                     <div class="password">
                         <div class="password1 input1">
                             <p class="title_input">Password</p>
-                            <input id="register_password" class="input_eye" type="password" placeholder="Your Password;">
+                            <input id="register_password" class="input_eye" type="password" placeholder="Your Password:">
                             <i id="login_eye" class="fa-solid fa-eye-slash"></i>
                         </div>
                     </div>
@@ -398,14 +402,14 @@
                     <div class="password">
                         <div class="password1 input1">
                             <p class="title_input">New Password</p>
-                            <input id="forgot_new" class="input_eye" type="password" placeholder="New Password;">
+                            <input id="forgot_new" class="input_eye" type="password" placeholder="New Password:">
                             <i id="login_eye" class="fa-solid fa-eye-slash"></i>
                         </div>
                     </div>
                     <div class="confirm">
                         <div class="password1 input1">
                             <p class="title_input">Confirm Password</p>
-                            <input id="forgot_confirm" class="input_eye" type="password" placeholder="Confirm Password;">
+                            <input id="forgot_confirm" class="input_eye" type="password" placeholder="Confirm Password:">
                             <i id="login_eye" class="fa-solid fa-eye-slash"></i>
                         </div>
                     </div>
@@ -434,14 +438,16 @@
         <script type="text/javascript">
         	var tradition = <%=convert_1_way_ArrayList_to_Json(tradition)%>
         	var cart_in_home = document.querySelector("#cart_in_home");
-        	var user_id = <%=(Integer)session.getAttribute("user_id")%>;
+        	var user_id = <%=user_id%>;
+        	console.log(user_id);
         	cart_in_home.addEventListener("click", () => 
         		{
-        			if (user_id != null){
-        				window.location = "http://localhost:8080/Jewelry_web/cart";
+        			if (user_id === 1){
+        				
+        				window.location = "http://localhost:8080/Jewelry_web/home?autoClick=true"; 	
         			}
         			else{
-        				window.location = "http://localhost:8080/Jewelry_web/home?autoClick=true"; 				
+        				window.location = "http://localhost:8080/Jewelry_web/cart";			
         			}	
         		}
         	)

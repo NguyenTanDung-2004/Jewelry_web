@@ -24,3 +24,10 @@ about_tab.addEventListener("click", () =>
 		scrollToDiv();
 	}
 )
+
+document.querySelector("#icon_cart").addEventListener("click", () => 
+
+	{
+		window.location = "http://localhost:8080/Jewelry_web/cart";
+	}
+)

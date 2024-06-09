@@ -13,3 +13,6 @@ if (action == "rings"){
 if (action == "earrings"){
 	cb_earrings.click();
 }
+if (action == "bracelets"){
+	cb_bracelets.click();
+}

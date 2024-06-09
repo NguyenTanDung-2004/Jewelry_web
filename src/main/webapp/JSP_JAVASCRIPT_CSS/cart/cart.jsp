@@ -1,9 +1,3 @@
-<%-- 
-    Document   : cart.jsp
-    Created on : May 20, 2024, 12:33:14 AM
-    Author     : ASUS
---%>
-
 
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Calendar"%>
@@ -53,7 +47,7 @@
             total_amount += quantity * price;
         }
         int all_cart_amount = product_details.size();
-
+        String img = (String) session.getAttribute("img");
     %>
 
     <body>
@@ -103,12 +97,18 @@
                 </div>
 
                 <div class="cart">
-                    <div class="user">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
+<!--                    <div class="user">-->
+                        <img class="user" style="cursor: pointer; border-radius: 50%; max-height: 30px; max-width: 30px; min-height: 30px; min-width: 30px; object-fit: cover;" src="<%=img%>" alt="">
+                    <div class="user_ava_hover">
+                        <div class="user_ava_arrow"></div>
+                        <div class="user_ava_hover_content">
+                            <p id="user_setting">User Setting</p>
+                            <p id="order_history">Order history</p>
+                            <p id="logout">Logout</p>
+                        </div>
+                    </div>    
                     <div style="visibility: hidden;"class="shopping_cart">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <!-- <img id="shopping_cart_icon" src="./assests/shopping-cart.png" alt=""> -->
                     </div>
                 </div>
 
@@ -164,10 +164,11 @@
                                 <image src=<%=imageUrl%> class="product_image"></image>
                                 <div class="product_description">
                                     <p><%=product_details.get(i).get(2)%> </p>
-                                    <div class="product_size">Ring size : <%=product_details.get(i).get(3)%></div>
+                                    <div id=<%="size_" + id%> class="product_size">Size : <%=product_details.get(i).get(3)%></div>
                                     <div class="product_price_and_update">
                                         <div id=<%="price_" + id%> class="product_price"><%=formatter.format(Double.parseDouble(product_details.get(i).get(5)))%> VND</div>
                                         <div class="product_update">
+                                            <i id="delete_<%= product_details.get(i).get(0) %>" style="cursor:pointer;" class="fa-solid fa-trash-can"></i>
                                             <button type="button" id="minus_btn" onclick=decrease(this) class="product_quantity">−</button>
                                             <div id=<%="quantity_" + id%> class="product_quantity"><%=product_details.get(i).get(4)%></div>
                                             <button type="button" id="plus_btn" onclick=increase(this) class="product_quantity">+</button>
@@ -185,8 +186,8 @@
                                 String imageUrl = request.getContextPath() + "/img_product/" + product_details.get(i).get(0) + "_1.png";
                                 String id = "index_" + String.valueOf(i);
                                 for (int m = 0; m < cartList.size(); m++) {
-                                    if (product_details.get(i).get(0).equals(cartList.get(m).get(1))) {%> 
-                                    
+                                    if (product_details.get(i).get(0).equals(cartList.get(m).get(1)) && product_details.get(i).get(3).equals(cartList.get(m).get(2))) {%> 
+
                         <div id=<%=id%> class="product_detail">
                             <div class="product_name">
                                 <input type="checkbox" class="product_check_box" onclick="add_to_cart(this)" checked>
@@ -198,10 +199,11 @@
                                 <image src=<%=imageUrl%> class="product_image"></image>
                                 <div class="product_description">
                                     <p><%=product_details.get(i).get(2)%> </p>
-                                    <div class="product_size">Ring size : <%=product_details.get(i).get(3)%></div>
+                                    <div id=<%="size_" + id%> class="product_size">Size : <%=product_details.get(i).get(3)%></div>
                                     <div class="product_price_and_update">
                                         <div id=<%="price_" + id%> class="product_price"><%=formatter.format(Double.parseDouble(product_details.get(i).get(5)))%> VND</div>
                                         <div class="product_update">
+                                            <i id=<%="delete_" + id%> style="cursor:pointer;" class="fa-solid fa-trash-can"></i>
                                             <button type="button" id="minus_btn" onclick=decrease(this) class="product_quantity">−</button>
                                             <div id=<%="quantity_" + id%> class="product_quantity"><%=product_details.get(i).get(4)%></div>
                                             <button type="button" id="plus_btn" onclick=increase(this) class="product_quantity">+</button>
@@ -225,10 +227,11 @@
                                 <image src=<%=imageUrl%> class="product_image"></image>
                                 <div class="product_description">
                                     <p><%=product_details.get(i).get(2)%> </p>
-                                    <div class="product_size">Ring size : <%=product_details.get(i).get(3)%></div>
+                                    <div id=<%="size_" + id%> class="product_size">Size : <%=product_details.get(i).get(3)%></div>
                                     <div class="product_price_and_update">
                                         <div id=<%="price_" + id%> class="product_price"><%=formatter.format(Double.parseDouble(product_details.get(i).get(5)))%> VND</div>
                                         <div class="product_update">
+                                            <i id=<%="delete_" + id%> style="cursor:pointer;" class="fa-solid fa-trash-can"></i>
                                             <button type="button" id="minus_btn" onclick=decrease(this) class="product_quantity">−</button>
                                             <div id=<%="quantity_" + id%> class="product_quantity"><%=product_details.get(i).get(4)%></div>
                                             <button type="button" id="plus_btn" onclick=increase(this) class="product_quantity">+</button>
@@ -242,7 +245,8 @@
                         </div> 
                         <% } %>
                         <% }
-                            session.removeAttribute("action"); %> 
+                            session.removeAttribute("action");
+                            session.removeAttribute("cartList");%> 
                         <% } %>             
                         <% }%>
 
@@ -355,7 +359,7 @@
                                         </div>-->
                     <div class="shipping_fee">
                         <h3>Shipping</h3>
-                        <div class="shipping_fee_value">50000</div>
+                        <div class="shipping_fee_value">0</div>
                     </div>
                     <div class="line"></div>
                     <div class="order_total">
@@ -481,6 +485,8 @@
 
     <script src="<%= request.getContextPath()%>/JSP_JAVASCRIPT_CSS/cart/main.js"></script>
     <script src="<%= request.getContextPath()%>/JSP_JAVASCRIPT_CSS/cart/get_provinces_data.js"></script>
+    <script src="<%= request.getContextPath()%>/JSP_JAVASCRIPT_CSS/cart/logout.js"></script>
+     <script src="<%= request.getContextPath()%>/JSP_JAVASCRIPT_CSS/cart/change_tab.js"></script>
     <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>-->
 
 </html>

@@ -210,14 +210,18 @@ collection_tab_button.addEventListener("click", () => {
 
 
 //User
-user.addEventListener("mouseenter", () =>
+// xử lí hover vào avt
+var user_img = document.querySelector("body header .header_child .user img")
+    // lấy ra đối tượng user hover
+var user_hover = document.querySelector("body header .header_child .user .user_hover");
+user_img.addEventListener("mouseenter", () =>
     {
         user_hover.style.transformOrigin = "10px 30px";
         user_hover.style.scale = "1";
     }
 )
 
-user.addEventListener("click", () =>
+user_img.addEventListener("click", () =>
     {
         user_hover.style.scale = "0";
     }

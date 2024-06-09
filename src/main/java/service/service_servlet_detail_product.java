@@ -43,4 +43,9 @@ public class service_servlet_detail_product {
 		interact_with_cart  obj = new interact_with_cart();
 		interact_with_cart.insert_cart(id_user, id_product, size, quantity);
 	}
+	//Update cart
+	public static void update_cart(int id_user, int id_product, float size, int quantity ) {
+		interact_with_cart  obj = new interact_with_cart();
+		interact_with_cart.update_cart_quantity(id_user, id_product, size, quantity);
+	}
 }

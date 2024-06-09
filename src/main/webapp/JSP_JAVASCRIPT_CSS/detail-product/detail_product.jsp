@@ -99,13 +99,15 @@
                     <div class="user_hover">
                         <div class="arrow"></div>
                         <div class="content">
-                            <p>User Setting</p>
-                            <p>Order history</p>
+                            <p id="user_setting">User Setting</p>
+                            <p id="order_history">Order history</p>
                             <p id="logout">Logout</p>
                         </div>
                     </div>
                 </div>
-                <i class="fa-solid fa-cart-shopping text_child" style="color: gray"></i>
+            	<a class="link_to_cart" href="http://localhost:8080/Jewelry_web/cart">
+                    <i class="fa-solid fa-cart-shopping text_child" style="color: gray"></i>
+                </a>
             </div>
             <%} %>
         </header>
@@ -460,42 +462,36 @@
             </div>
         </div>
     <footer>
-      <div class="footer">
-          <div class="main">
-              <div class="location main_child">
-                  <div class="top3">Location</div>
-                  <div class="bottom3">
-                      <i class="fa-solid fa-location-dot"></i>
-                      <p>UIT - University Information Of Technology.</p>
-                  </div>
-              </div>
-              <div class="About_us main_child">
-                  <div class="top3">About Us</div>
-                  <div class="bottom3">
-                      <p>Nguyễn Tấn Dũng</p>
-                      <p>Phan Nguyễn Trà Giang</p>
-                      <p>Vũ Hồ Quỳnh Anh</p>
-                      <p>Nguyễn Văn Duy Bảo</p>
-                  </div>
-              </div>
-              <div class="hotlline main_child">
-                  <div class="top3">Hotline</div>
-                  <div class="bottom3">Timo - 0977482071</div>
-              </div>
-              <div class="subcribe main_child">
-                  <div class="top3">Subcribe Newletter</div>
-                  <div class="bottom3">
-                      <input type="email" placeholder="Your Email:">
-                      <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-              </div>
-          </div>
-          <div class="line_copyright">
-              <div class="line"></div>
-              <p>@copyright</p>
-          </div>
-      </div>                                                                 
-    </footer>
+            <div class="footer">
+                <div class="main">
+                    <div class="location main_child">
+                        <div class="top3">Location</div>
+                        <div id="location" class="bottom3">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>UIT - University Information Of Technology.</p>
+                        </div>
+                    </div>
+                    <div class="About_us main_child">
+                        <div class="top3">About Us</div>
+                        <div class="bottom3">
+                            <p>Nguyễn Tấn Dũng</p>
+                            <p>Phan Nguyễn Trà Giang</p>
+                            <p>Vũ Hồ Quỳnh Anh</p>
+                            <p>Nguyễn Văn Duy Bảo</p>
+                        </div>
+                    </div>
+                    <div class="hotlline main_child">
+                        <div class="top3">Hotline</div>
+                        <div class="bottom3">Timo - 0977482071</div>
+                    </div>
+             
+                </div>
+                <div class="line_copyright">
+                    <div class="line"></div>
+                    <p>@copyright</p>
+                </div>
+            </div>
+        </footer>
     <script type="text/javascript">
     	var userID = <%=request.getSession().getAttribute("id_user")%>
     </script>

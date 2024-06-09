@@ -1,5 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ 
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package servlet;
@@ -23,48 +23,10 @@ import com.google.gson.JsonElement;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.JSONTokener;
 
-/**
- *
- * @author ASUS
- */
 public class servlet_cart extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-//    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet servlet_cart</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet servlet_cart at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
-//    }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -85,15 +47,6 @@ public class servlet_cart extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("//JSP_JAVASCRIPT_CSS//cart//cart.jsp");
         dispatcher.forward(request, response);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -116,6 +69,7 @@ public class servlet_cart extends HttpServlet {
         JsonObject jsonObject = gson.fromJson(jsonBuffer.toString(), JsonObject.class);
 
         String action = jsonObject.get("action").getAsString();
+        System.out.println(action);
 
         String coupon_code = request.getParameter("inputField");
         HttpSession session = request.getSession();
@@ -126,12 +80,12 @@ public class servlet_cart extends HttpServlet {
         int order_id = interact_with_orders.create_id_order();
         if (action.equals("buy")) {
             String phone = jsonObject.get("phone").getAsString();
-            float total_money = jsonObject.get("phone").getAsFloat();
+            float total_money = jsonObject.get("total_money").getAsFloat();
             String adrress = jsonObject.get("adrress").getAsString();
             String province = jsonObject.get("province").getAsString();
             String city = jsonObject.get("city").getAsString();
             String district = jsonObject.get("district").getAsString();
-            Float coupon_ratio = (float) 0.5;
+            Float coupon_ratio = (float) 0;
             Float shipping_fee = jsonObject.get("shipping_fee").getAsFloat();
             interact_with_orders.create_order(order_id, total_money, phone, adrress, province, district, city, coupon_ratio, shipping_fee);
             JsonArray order_detail = jsonObject.get("product_detail").getAsJsonArray();
@@ -159,14 +113,22 @@ public class servlet_cart extends HttpServlet {
 
             response.getWriter().println(responseData);
         }
-
+        
+        
+        if(action.equals("delete")) {
+        	int productId = jsonObject.get("id").getAsInt();
+            String productName = jsonObject.get("name").getAsString();
+            int sizeToDelete = jsonObject.get("size").getAsInt();
+            System.out.println(productId);
+            System.out.println(productName);
+            System.out.println(sizeToDelete);
+            
+//        	ArrayList<Integer> get_id_and_size_by_name = interact_with_cart.get_id_and_size_by_name(jsonObject.get("name").getAsString());
+//            int product_id = get_id_and_size_by_name.get(0);
+//            int size_to_delete = jsonObject.get("size").getAsInt();
+            interact_with_cart.delete_product_from_cart(user_id ,productId,sizeToDelete);       
+        }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

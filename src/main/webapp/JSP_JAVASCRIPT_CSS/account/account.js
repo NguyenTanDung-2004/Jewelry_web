@@ -379,7 +379,6 @@ viewProductBtns.forEach((button) => {
 	document.querySelector(".grid-detail-order .header .header-info .time-order").textContent = date;
 	document.querySelector(".js-subtotal-money").textContent = subtotal;
 	document.querySelector(".js-shipping-money").textContent = ship;
-	document.querySelector(".js-discount-money").textContent = discount;
 	document.querySelector(".js-total-money").textContent = totalMoney;
 	
 	document.querySelector(".grid-detail-order .order-customer .name span").textContent 

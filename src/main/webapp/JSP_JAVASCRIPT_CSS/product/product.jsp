@@ -111,7 +111,25 @@
                     <i class="fa-solid fa-cart-shopping text_child" style="color: gray"></i>
                 </a>
             </div>
-            <%} %>
+            <%} 
+            else{
+            %>
+            <div class="right header_child" style="visibility: hidden;">
+                <div class="user">
+                    <img style="max-height: 30px; max-width: 30px; min-height: 30px; min-width: 30px; object-fit: cover;" src="<%=img%>" alt="">
+                    <div class="user_hover">
+                        <div class="arrow"></div>
+                        <div class="content">
+                            <p id="user_setting">User Setting</p>
+                            <p id="order_history">Order history</p>
+                            <p id="logout">Logout</p>
+                        </div>
+                    </div>
+                </div>
+            	<a class="link_to_cart" href="http://localhost:8080/Jewelry_web/cart">
+                    <i class="fa-solid fa-cart-shopping text_child" style="color: gray"></i>
+                </a>
+                <%} %>
         </header>
         <main>
             <div class="search">
@@ -300,7 +318,6 @@
     	var action = <%=convert_1_String_to_String(action)%>
     	console.log(action);
     </script>
-    <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/product.js"></script>
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/service_for_event_for_tab.js"></script>
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/event_for_tab.js"></script>
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/sort.js"></script>
@@ -310,5 +327,6 @@
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/load_items.js"></script>
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/handle_parameter_from_home.js"></script>
     <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/event_filter_from_detail.js"></script>
+    <script src="/Jewelry_web/JSP_JAVASCRIPT_CSS/product/product.js"></script>
     </body>
 </html>

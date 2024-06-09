@@ -115,7 +115,11 @@ public class interact_with_orders {
             java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
 
             int deleted = 0;
-            int status = 1;
+            int status = 0;
+            System.out.println(total_money);
+            float new_total_money = (float) total_money;
+            System.out.println(new_total_money + " asdfasdfasdf");
+            float new_ship = (float) ship;
 
             String query = "INSERT INTO orders (id, expectation_date, status, total_money, detail_address, province, district, sub, phone, date, deleted, ratio_of_coupon, ship) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -123,7 +127,7 @@ public class interact_with_orders {
             statement.setInt(1, new_id_order);
             statement.setDate(2, expectation_date);
             statement.setInt(3, status);
-            statement.setFloat(4, total_money);
+            statement.setFloat(4, new_total_money);
             statement.setString(5, detail_address);
             statement.setString(6, province);
             statement.setString(7, district);
@@ -131,9 +135,11 @@ public class interact_with_orders {
             statement.setString(9, phone);
             statement.setDate(10, date);
             statement.setInt(11, deleted);
-            statement.setFloat(12, ratio_of_coupon);
-            statement.setFloat(13, ship);
+            statement.setFloat(12, 0);
+            statement.setFloat(13, new_ship);
             statement.executeUpdate();
+            System.out.println(total_money);
+            System.out.println(ratio_of_coupon);
         } catch (SQLException e) {
             e.printStackTrace();
         }

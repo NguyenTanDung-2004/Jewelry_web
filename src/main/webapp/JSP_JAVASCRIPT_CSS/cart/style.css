@@ -86,6 +86,9 @@ html {
 }
 
 .cart {
+    margin-right:40px;
+    height: 29px;
+    top: 10%;
     display: flex;
     width: 17%;
     justify-content: space-evenly;
@@ -98,10 +101,26 @@ html {
     line-height: 204px
 }
 
-#user_icon, #shopping_cart_icon {
+/*#user_icon, #shopping_cart_icon {
     width: 54%;
     height: 41%;
+}*/
+
+body header .header_child .user{
+    position: relative; 
 }
+body header .header_child .user img{
+    cursor: pointer;
+    width: 30px; border-radius: 50%;
+}
+/*body header .header_child .user .user_hover{
+    scale: 0;
+    transform-origin: 10px 30px;
+    transition: 0.3s;
+    position: absolute;
+    top: -10px;
+    z-index: 1;
+}*/
 
 .line {
     width: 100%;
@@ -158,18 +177,22 @@ html {
 #filter:hover, #all_cart:hover {
     cursor:pointer;
 }
-
-.user_hover{
+/*body header .header_child .user{
+    position: relative; 
+}
+body header .header_child .user img{
+    cursor: pointer;
+    width: 30px; border-radius: 50%;
+}
+body header .header_child .user .user_hover{
     scale: 0;
     transform-origin: 10px 30px;
     transition: 0.3s;
     position: absolute;
-    right: 110px;
-    top: 10px;
+    top: -10px;
     z-index: 1;
 }
-
-.user_hover_content{
+body header .header_child .user .user_hover .content{
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -183,20 +206,91 @@ html {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.user_hover_content > p{
+body header .header_child .user .user_hover .content p{
     cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    transition: 0.3s;
+    padding: 10px 10px;
+}
+body header .header_child .user .user_hover .content p:hover{
+    box-shadow:0 2px 10px 2px gray;
+}
+body header .header_child .user .user_hover .arrow{
+    position: absolute;
+    top: 35px;
+    left: 7px;
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    transform: rotateZ(45deg);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
+    z-index: -9;
+}*/
+
+
+.user {
+    position: relative;
+}
+.user_hover, .user_ava_hover{
+    scale: 0;
+    transform-origin: 10px 30px;
+    transition: 0.3s;
+    position: absolute;
+    right: 110px;
+    top: -10px;
+    z-index: 1;
+}
+
+.user_ava_hover {
+    top: -13px;
+    right: 173px
+}
+
+.user_hover_content,.user_ava_hover_content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 150px;
+    background-color: white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    left: -20px;
+    top: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.user_hover_content > p, .user_ava_hover_content > p{
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: gray;
     width: 87%;
     border-radius: 5px;
     transition: 0.3s;
     padding: 10px 10px;
 }
-.user_hover_content > p:hover{
+.user_hover_content > p:hover, .user_ava_hover_content > p:hover{
     box-shadow:0 2px 10px 2px gray;
 }
 .arrow{
     position: absolute;
     top: 35px;
     left: 50px;
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    transform: rotateZ(45deg);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
+    z-index: -9;
+}
+
+.user_ava_arrow{
+    position: absolute;
+    top: 35px;
+    left: 0px;
     background-color: white;
     height: 15px;
     width: 15px;
@@ -256,9 +350,6 @@ input[type="checkbox"] {
 .product_description {
     position: relative;
     height: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .product_description > p {
@@ -302,7 +393,6 @@ input[type="checkbox"] {
     height: fit-content;
     margin-top: 20px;
     padding: 10px 30px 20px;
-    max-width: 300px;
 }
 
 .order_info {

@@ -96,3 +96,30 @@ see_all_earrings.addEventListener("click", () =>
 		submit_redirect("earrings");
 	}
 )
+
+
+var img_ring = document.querySelector("#img_ring");
+img_ring.addEventListener("click", () => 
+	{
+		submit_redirect("rings");
+	}
+)
+var img_bracelet = document.querySelector("#img_bracelet");
+img_bracelet.addEventListener("click", () => 
+	{
+		submit_redirect("bracelets");
+	}
+)
+var img_necklace = document.querySelector("#img_necklace");
+img_necklace.addEventListener("click", () => 
+	{
+		submit_redirect("necklaces");
+	}
+)
+var img_earring = document.querySelector("#img_earring");
+img_earring.addEventListener("click", () => 
+	{
+		submit_redirect("earrings");
+	}
+)
+

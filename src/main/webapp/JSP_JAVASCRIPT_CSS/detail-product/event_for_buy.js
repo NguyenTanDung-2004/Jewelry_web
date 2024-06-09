@@ -21,6 +21,20 @@ document.querySelectorAll('.value-size').forEach(sizeElement => {
     sizeElement.addEventListener('click', (event) => {
         let selectedSize = event.target.innerText;
         selectSize(selectedSize);
+        
+		let sizeArray = selectedSize.split(" ");
+        checkProductInCart(productId, sizeArray[0], (exists) => {
+            let btn = document.getElementById('btn_add'); 
+            if (exists) {
+               btn.style.opacity = "0.5"; 
+                    btn.disabled = true;
+                    btn.style.cursor = "not-allowed";
+            } else {
+                btn.style.opacity = "1"; 
+                    btn.disabled = false;
+                    btn.style.cursor = "pointer";
+            }
+        });
     });
 });
 
@@ -44,7 +58,7 @@ function checkProductInCart(productId, size, callback) {
 }
 
 
-// Function to buy now and add to cart
+// Function to buy now (not in cart before)
 function buyNow(productId, size, quantity) {
     let buyRequest = new XMLHttpRequest();
   	buyRequest.open("POST", "http://localhost:8080/Jewelry_web/buy", true);
@@ -56,11 +70,27 @@ function buyNow(productId, size, quantity) {
     	var resp = JSON.parse(buyRequest.responseText);
         // Sử dụng dữ liệu từ mảngd
        	if (resp == "buy_now_successfully"){
-			alert("Product will be bought");
 			window.location = "http://localhost:8080/Jewelry_web/cart";
 		   }
 		else{
-			alert("Product will not be bought");
+		}	    
+    }
+}
+// Function to buy now update (in cart before)
+function buyNowUpdate(productId, size, quantity) {
+    let buyRequest = new XMLHttpRequest();
+  	buyRequest.open("POST", "http://localhost:8080/Jewelry_web/update", true);
+   	buyRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=UTF-8");
+    var params = "id=" + productId + "&size=" + size + "&quantity=" + quantity + "&action=buy_now" + "&cartList"; 
+    buyRequest.send(params);
+    buyRequest.onload = function() {
+		console.log("Response from server:", buyRequest.responseText);
+    	var resp = JSON.parse(buyRequest.responseText);
+        // Sử dụng dữ liệu từ mảngd
+       	if (resp == "buy_now_successfully"){
+			window.location = "http://localhost:8080/Jewelry_web/cart";
+		   }
+		else{
 		}	    
     }
 }
@@ -83,7 +113,7 @@ function addProductToCart(productId, size, quantity) {
 }
 
 
-
+//Click ADD_TO_CART
 let btn_add = document.getElementById('btn_add'); 
 btn_add.addEventListener("click", () => {
 // Main function to handle the process
@@ -99,7 +129,9 @@ function handleAddToCart() {
     if (userID != null) {
             checkProductInCart(productId, sizeArray[0], function(productExists) {
                 if (productExists) {
-                    alert("This product already exists in your cart.");
+                    btn_add.style.opacity = "0.5"; 
+                    btn_add.disabled = true;
+                    btn_add.style.cursor = "not-allowed";
                 } else {
                     // Get selected quantity
                     let quantityInput = document.querySelector(".numbers");
@@ -118,6 +150,8 @@ function handleAddToCart() {
 handleAddToCart();
 });
 
+
+//Click BUY_NOW
 let btn_buy = document.getElementById('buy_now');
 btn_buy.addEventListener("click", () =>{
 	function handleBuy() {
@@ -131,7 +165,10 @@ btn_buy.addEventListener("click", () =>{
         if (userID != null) {
             checkProductInCart(productId, sizeArray[0], function(productExists) {
                 if (productExists) {
-                    alert("This product already exists in your cart.");
+                    let quantityInput = document.querySelector(".numbers");
+                    let selectedQuantity = quantityInput.value;
+                    // Add product to cart
+                    buyNowUpdate(productId, sizeArray[0], selectedQuantity);
                 } else {
                     // Get selected quantity
                     let quantityInput = document.querySelector(".numbers");
