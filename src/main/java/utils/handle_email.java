@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 public class handle_email {
 	public static int send_email(String email, String Subject, String Body) {
 		// Thông tin tài khoản email nguồn (email A)
-        final String username = "tandungnguyen918@gmail.com";
-        final String password = "oese kloq vtgv mxii";
+        final String username = "email của chị";
+        final String password = "password khi mở khóa hai lớp";
 
         // Thông tin tài khoản email đích (email B)
 
@@ -81,7 +81,6 @@ public class handle_email {
 		}
 	}
 	public static void main(String args[]) {
-		String s = handle_email.send_code("tandungnguyen918@gmail.com", 1);
-		System.out.println(s);
+		
 	}
 }
