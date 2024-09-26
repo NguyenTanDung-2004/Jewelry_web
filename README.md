@@ -1,2 +1,1 @@
-# Jewelry_web
-In this project, We will create a website to sell jewelry
+In this repository, we will provide for everyone source code about Jewelry website.
